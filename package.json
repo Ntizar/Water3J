@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test": "node tests/node-run.mjs && node tests/tanda3.mjs && node tests/tanda4.mjs && node tests/runner-navegador.mjs"
+    "test": "node tests/node-run.mjs && node tests/tanda3.mjs && node tests/tanda4.mjs && node tests/runner-navegador.mjs && node tests/tanda5.mjs"
   },
   "dependencies": {
     "puppeteer": "^25.9.0",

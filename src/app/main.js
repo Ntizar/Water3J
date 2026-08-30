@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { crearEstadoBase, serializar, deserializar, profundidadEn } from './estado.js';
 import { generarCampo, uniformesShader, alturaEn } from './campoOlas.js';
 import { VERTEX_AGUA, FRAGMENT_AGUA, VERTEX_FONDO, FRAGMENT_FONDO, VERTEX_CIELO, FRAGMENT_CIELO } from './shaders.js';
+import { ESTACIONES, descargarSerie, normalizarSerie, ultimoEstadoOleaje, FUENTE } from './puertos.js';
 
 const MAX_OLAS = 64;
 const estado = crearEstadoBase();
@@ -173,6 +174,33 @@ for (const [k, e] of Object.entries(ESCENAS)) {
   chipsEscena.appendChild(b);
 }
 aplicarEscena('brisa');
+
+// ---------- Datos reales de Puertos del Estado ----------
+const selDatos = $('selEstacion');
+if (selDatos) {
+  for (const [codigo, e] of Object.entries(ESTACIONES)) {
+    const o = document.createElement('option');
+    o.value = codigo; o.textContent = e.nombre;
+    selDatos.appendChild(o);
+  }
+  $('btnConectar').addEventListener('click', async () => {
+    const codigo = selDatos.value;
+    aviso('CONECTANDO…', ESTACIONES[codigo].nombre + ' · Puertos del Estado');
+    try {
+      // directo (fallará en navegadores estrictos por CORS) -> proxy público de lectura como respaldo
+      let serie;
+      try { serie = await descargarSerie(codigo, { horas: 24 }); }
+      catch { serie = await descargarSerie(codigo, { horas: 24, proxyOpcional: 'https://corsproxy.io/?' + encodeURIComponent('') }); }
+      const registros = normalizarSerie(serie.serie);
+      const eo = ultimoEstadoOleaje(registros);
+      estado.oleaje.Hs = eo.Hs; estado.oleaje.Tp = eo.Tp; estado.oleaje.vientoU = Math.max(2, eo.Hs * 2.2);
+      $('Hs').value = eo.Hs; $('vHs').textContent = eo.Hs.toFixed(1) + ' m';
+      $('Tp').value = Math.min(eo.Tp, 20); $('vTp').textContent = eo.Tp.toFixed(1) + ' s';
+      actualizarCampo(); actualizarTelemetria();
+      aviso('DATOS REALES CARGADOS', `${ESTACIONES[codigo].nombre} · ${new Date(eo.instante).toUTCString().slice(5, 22)} GMT · fuente: ${FUENTE}`);
+    } catch (err) { aviso('SIN CONEXIÓN CON PORTUS', err.message.slice(0, 60) + ' — usa la carga JSON'); }
+  });
+}
 
 // ---------- Eventos ----------
 const EVENTOS = {
@@ -351,5 +379,5 @@ window.Water3J = {
   setCamara(a) { if (a.dist !== undefined) dist = a.dist; if (a.angX !== undefined) angX = a.angX; if (a.angY !== undefined) angY = a.angY; if (a.auto !== undefined) orbitaAuto = a.auto; },
   get comps() { return comps; },
   alturaEn, profundidadEn: (x, y) => profundidadEn(estado, x, y),
-  renderer, matAgua, actualizarCampo, aplicarEscena, camara, escena3d: escena, agua,
+  renderer, matAgua, actualizarCampo, actualizarTelemetria, aplicarEscena, camara, escena3d: escena, agua,
 };

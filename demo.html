@@ -83,7 +83,10 @@
   .sec h3 { font-size: 10px; letter-spacing: 2.5px; color: var(--gris2); margin: 16px 0 10px; text-transform: uppercase; }
   .sec h3:first-child { margin-top: 0; }
 
-  .fila { margin-bottom: 14px; }
+  .seccion { margin-bottom: 14px; }
+  .fila-datos { display: flex; gap: 8px; align-items: center; }
+  .selector { flex: 1; background: #0d1017; color: #dfe9ef; border: 1px solid #26303c; border-radius: 8px; padding: 9px 8px; font: inherit; }
+  .nota-seccion { font-size: 10px; color: #7b8b98; margin-top: 6px; line-height: 1.5; }
   .fila .cabecera { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; }
   .fila .etq { font-size: 10.5px; letter-spacing: 1.2px; color: var(--gris); text-transform: uppercase; }
   .fila .valor { font-size: 12px; color: #fff; font-weight: 600; font-variant-numeric: tabular-nums; }
@@ -154,6 +157,10 @@
   </div>
   <div id="cuerpo">
     <div class="sec activa" id="sec-escena">
+      <h3>Datos reales · Puertos del Estado</h3>
+      <div class="fila-datos"><select id="selEstacion" class="selector"></select>
+      <button id="btnConectar" class="chip">Conectar boya</button></div>
+      <p class="nota-seccion">Carga Hs y Tp medidos ahora mismo por la boya. La fuente queda siempre visible en pantalla.</p>
       <h3>Escenas</h3>
       <div class="chips" id="chipsEscena"></div>
       <h3>Eventos</h3>
