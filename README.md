@@ -15,24 +15,30 @@ Crear una web app con Three.js que simule de forma científica y visualmente esp
 - **Interacción oleaje-estructuras**: impacto contra diques, muros portuarios, agitación interior
 - **Cálculo de oleaje en playas y puertos** reales (fase futura)
 
-## Estructura del repositorio
+## Metodología: tests primero
+
+**La biblia del proyecto es `docs/09-biblia-tests.md`.** El desarrollo se rige por TDD a nivel de aceptación:
+
+- 14 tests (W3J-T01…T14) con criterios numéricos medibles definen qué debe funcionar y cómo
+- Ninguna feature existe hasta que su test pasa; ningún commit rompe un test ya en verde
+- El runner en navegador (`tests/runner.html`) audita la app real y genera el registro (`tests/registro.json`)
+
+## Estado
+
+| | |
+|---|---|
+| **Tests** | 0/14 pasando (14 pendientes) — ver `tests/registro.json` |
+| **Fase actual** | 0 → 1: setup + océano base Gerstner |
+| **Docs** | 9 documentos en `docs/` (teoría, referencias, arquitectura, tests) |
+
+## Estructura
 
 ```
 Water3J/
-├── docs/
-│   ├── 01-referencias.md       # Catálogo de repos, papers y recursos
-│   ├── 02-teoria.md            # Física del oleaje: teoría de Airy, Gerstner, SWE
-│   ├── 03-transformaciones.md  # Refracción, shoaling, difracción, reflexión
-│   ├── 04-sedimentos.md        # Transporte de sedimentos y morfodinámica
-│   └── 05-arquitectura.md      # Arquitectura técnica de la futura web app
-└── README.md
+├── docs/            # Biblia de conocimiento (01-09: teoría, estado del arte, tests)
+├── tests/           # suite.js + runner.html + registro.json (auditoría)
+└── src/             # (por crear) app
 ```
-
-## Estado actual
-
-**Fase 1: Investigación** — recopilando referencias, librerías y fórmulas.
-**Fase 2: Prototipo** — por definir tras la investigación.
-**Fase 3: Web app** — integración completa.
 
 ## Licencia
 

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Water3J — Runner de tests</title>
+<style>
+  body { font-family: system-ui, sans-serif; background: #fff; color: #1e293b; margin: 2rem; }
+  h1 { color: #2563eb; }
+  table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
+  th, td { border: 1px solid #e2e8f0; padding: .5rem .75rem; text-align: left; font-size: .9rem; }
+  th { background: #f8fafc; }
+  .PASS { color: #16a34a; font-weight: 600; }
+  .FAIL { color: #dc2626; font-weight: 600; }
+  .PENDING { color: #94a3b8; }
+  button { background: #2563eb; color: #fff; border: 0; padding: .6rem 1.2rem; border-radius: 6px; font-size: 1rem; cursor: pointer; }
+  #resumen { margin-top: 1rem; font-size: 1.1rem; }
+</style>
+</head>
+<body>
+<h1>Water3J — Auditoría de tests</h1>
+<p>La biblia: <code>docs/09-biblia-tests.md</code> · Suite: <code>tests/suite.js</code></p>
+<button id="ejecutar">Ejecutar suite</button>
+<div id="resumen"></div>
+<table id="tabla">
+  <thead><tr><th>ID</th><th>Test</th><th>Categoría</th><th>Prioridad</th><th>Estado</th><th>Medida</th><th>Criterio</th></tr></thead>
+  <tbody></tbody>
+</table>
+<script type="module">
+  // Importa la app desde ../src/app.js cuando exista.
+  // Los tests que necesitan la app (física, gpgpu) la importan internamente en su run().
+  import { TESTS } from './suite.js';
+
+  const tbody = document.querySelector('#tabla tbody');
+  const resumen = document.getElementById('resumen');
+
+  function pintar() {
+    tbody.innerHTML = '';
+    let pass = 0, fail = 0, pend = 0;
+    for (const t of TESTS) {
+      if (t.estado === 'PASS') pass++;
+      else if (t.estado === 'FAIL') fail++;
+      else pend++;
+      const fila = `<tr>
+        <td>${t.id}</td><td>${t.nombre}</td><td>${t.categoria}</td><td>${t.prioridad}</td>
+        <td class="${t.estado}">${t.estado}</td>
+        <td>${t.medida ?? '—'}</td><td>${t.criterio ?? '—'}</td>
+      </tr>`;
+      tbody.insertAdjacentHTML('beforeend', fila);
+    }
+    resumen.textContent = `${pass} PASS · ${fail} FAIL · ${pend} PENDING de ${TESTS.length}`;
+  }
+
+  document.getElementById('ejecutar').addEventListener('click', async () => {
+    for (const t of TESTS) {
+      if (typeof t.run !== 'function') { t.estado = 'PENDING'; continue; }
+      try {
+        const r = await t.run();
+        t.estado = r.pasa ? 'PASS' : 'FAIL';
+        t.medida = r.medida; t.criterio = r.criterio;
+      } catch (e) {
+        t.estado = 'FAIL'; t.medida = 'ERROR: ' + e.message;
+      }
+      pintar();
+    }
+    // Descarga del registro para commit (auditoría)
+    const registro = { fecha: new Date().toISOString(), tests: Object.fromEntries(TESTS.map(t => [t.id, { estado: t.estado, medida: t.medida }])) };
+    console.log('Registro de auditoría:', registro);
+  });
+
+  pintar();
+</script>
+</body>
+</html>

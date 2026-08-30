@@ -1,0 +1,7 @@
+{
+  "_descripcion": "Registro de auditoría de tests Water3J. Se actualiza en cada ejecución del runner.",
+  "ultimo_run": null,
+  "commit": null,
+  "resumen": { "pass": 0, "fail": 0, "pending": 14, "omitted": 0 },
+  "tests": {}
+}
