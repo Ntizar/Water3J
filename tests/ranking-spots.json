@@ -1,0 +1,906 @@
+[
+ {
+  "spot": {
+   "nombre": "El Brusco (Noja)",
+   "latR": 43.477,
+   "lonR": -3.707,
+   "latO": 43.445,
+   "lonO": -3.691,
+   "orient": "N",
+   "fondo": "barra de arena",
+   "tipo": "beach break"
+  },
+  "bat": {
+   "xh": [
+    {
+     "x": 0,
+     "h": 37.5
+    },
+    {
+     "x": 946,
+     "h": 26.1
+    },
+    {
+     "x": 1893,
+     "h": 17
+    },
+    {
+     "x": 2839,
+     "h": 18.5
+    },
+    {
+     "x": 3785,
+     "h": 52.3
+    }
+   ],
+   "dTotal": 3785,
+   "hRompe": 52.3
+  },
+  "scoreGlobal": 6.8,
+  "dias": [
+   {
+    "dia": "2026-08-30",
+    "scoreMedio": 7.4,
+    "scoreMax": 7.7,
+    "HsRompeMax": 0.928,
+    "TMedio": 7.4,
+    "horasBuenas": 24
+   },
+   {
+    "dia": "2026-08-31",
+    "scoreMedio": 8.4,
+    "scoreMax": 8.9,
+    "HsRompeMax": 1.213,
+    "TMedio": 8.3,
+    "horasBuenas": 24
+   },
+   {
+    "dia": "2026-09-01",
+    "scoreMedio": 7.3,
+    "scoreMax": 7.9,
+    "HsRompeMax": 0.965,
+    "TMedio": 8.2,
+    "horasBuenas": 17
+   },
+   {
+    "dia": "2026-09-02",
+    "scoreMedio": 5.9,
+    "scoreMax": 6.5,
+    "HsRompeMax": 0.632,
+    "TMedio": 6.6,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-03",
+    "scoreMedio": 5.6,
+    "scoreMax": 5.9,
+    "HsRompeMax": 0.467,
+    "TMedio": 5.6,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-04",
+    "scoreMedio": 5.4,
+    "scoreMax": 5.5,
+    "HsRompeMax": 0.368,
+    "TMedio": 6.5,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-05",
+    "scoreMedio": 6,
+    "scoreMax": 7.8,
+    "HsRompeMax": 0.586,
+    "TMedio": 8.2,
+    "horasBuenas": 4
+   },
+   {
+    "dia": "2026-09-06",
+    "scoreMedio": 8,
+    "scoreMax": 8.4,
+    "HsRompeMax": 0.718,
+    "TMedio": 9.1,
+    "horasBuenas": 21
+   }
+  ],
+  "ejemplo": {
+   "t": "2026-09-03T00:00",
+   "Hs": 0.52,
+   "T": 6,
+   "dir": 325,
+   "HsRompe": 0.368,
+   "score": 5.5
+  }
+ },
+ {
+  "spot": {
+   "nombre": "Somo (Cantabria)",
+   "latR": 43.436,
+   "lonR": -3.729,
+   "latO": 43.398,
+   "lonO": -3.713,
+   "orient": "NW",
+   "fondo": "barra de arena",
+   "tipo": "beach break"
+  },
+  "bat": {
+   "xh": [
+    {
+     "x": 0,
+     "h": 79
+    },
+    {
+     "x": 1105,
+     "h": 22
+    },
+    {
+     "x": 2209,
+     "h": 25.2
+    },
+    {
+     "x": 3314,
+     "h": 55.8
+    },
+    {
+     "x": 4419,
+     "h": 19
+    }
+   ],
+   "dTotal": 4419,
+   "hRompe": 19
+  },
+  "scoreGlobal": 6.5,
+  "dias": [
+   {
+    "dia": "2026-08-30",
+    "scoreMedio": 7,
+    "scoreMax": 7.4,
+    "HsRompeMax": 0.852,
+    "TMedio": 7.4,
+    "horasBuenas": 19
+   },
+   {
+    "dia": "2026-08-31",
+    "scoreMedio": 7.9,
+    "scoreMax": 8.3,
+    "HsRompeMax": 1.063,
+    "TMedio": 8.3,
+    "horasBuenas": 24
+   },
+   {
+    "dia": "2026-09-01",
+    "scoreMedio": 6.9,
+    "scoreMax": 7.4,
+    "HsRompeMax": 0.845,
+    "TMedio": 8.2,
+    "horasBuenas": 14
+   },
+   {
+    "dia": "2026-09-02",
+    "scoreMedio": 5.8,
+    "scoreMax": 6.3,
+    "HsRompeMax": 0.57,
+    "TMedio": 6.6,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-03",
+    "scoreMedio": 5.5,
+    "scoreMax": 5.8,
+    "HsRompeMax": 0.462,
+    "TMedio": 5.6,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-04",
+    "scoreMedio": 5.3,
+    "scoreMax": 5.4,
+    "HsRompeMax": 0.355,
+    "TMedio": 6.5,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-05",
+    "scoreMedio": 5.8,
+    "scoreMax": 7.6,
+    "HsRompeMax": 0.513,
+    "TMedio": 8.2,
+    "horasBuenas": 4
+   },
+   {
+    "dia": "2026-09-06",
+    "scoreMedio": 7.7,
+    "scoreMax": 8,
+    "HsRompeMax": 0.628,
+    "TMedio": 9.1,
+    "horasBuenas": 21
+   }
+  ],
+  "ejemplo": {
+   "t": "2026-09-03T00:00",
+   "Hs": 0.52,
+   "T": 6,
+   "dir": 325,
+   "HsRompe": 0.353,
+   "score": 5.4
+  }
+ },
+ {
+  "spot": {
+   "nombre": "Los Locos (Suances)",
+   "latR": 43.462,
+   "lonR": -4.048,
+   "latO": 43.425,
+   "lonO": -4.032,
+   "orient": "N",
+   "fondo": "roca/arena",
+   "tipo": "beach break"
+  },
+  "bat": {
+   "xh": [
+    {
+     "x": 0,
+     "h": 3.8
+    },
+    {
+     "x": 1078,
+     "h": 2
+    },
+    {
+     "x": 2156,
+     "h": 10.6
+    },
+    {
+     "x": 3234,
+     "h": 25.2
+    },
+    {
+     "x": 4312,
+     "h": 26.7
+    }
+   ],
+   "dTotal": 4312,
+   "hRompe": 26.7
+  },
+  "scoreGlobal": 6.5,
+  "dias": [
+   {
+    "dia": "2026-08-30",
+    "scoreMedio": 7.1,
+    "scoreMax": 7.6,
+    "HsRompeMax": 0.905,
+    "TMedio": 7.4,
+    "horasBuenas": 18
+   },
+   {
+    "dia": "2026-08-31",
+    "scoreMedio": 7.9,
+    "scoreMax": 8.2,
+    "HsRompeMax": 1.044,
+    "TMedio": 8.4,
+    "horasBuenas": 24
+   },
+   {
+    "dia": "2026-09-01",
+    "scoreMedio": 6.9,
+    "scoreMax": 7.3,
+    "HsRompeMax": 0.824,
+    "TMedio": 8.1,
+    "horasBuenas": 16
+   },
+   {
+    "dia": "2026-09-02",
+    "scoreMedio": 5.9,
+    "scoreMax": 6.3,
+    "HsRompeMax": 0.576,
+    "TMedio": 6.6,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-03",
+    "scoreMedio": 5.6,
+    "scoreMax": 5.9,
+    "HsRompeMax": 0.484,
+    "TMedio": 5.8,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-04",
+    "scoreMedio": 5.4,
+    "scoreMax": 5.5,
+    "HsRompeMax": 0.367,
+    "TMedio": 6.6,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-05",
+    "scoreMedio": 5.8,
+    "scoreMax": 7.5,
+    "HsRompeMax": 0.498,
+    "TMedio": 8.1,
+    "horasBuenas": 4
+   },
+   {
+    "dia": "2026-09-06",
+    "scoreMedio": 7.7,
+    "scoreMax": 7.9,
+    "HsRompeMax": 0.606,
+    "TMedio": 9.4,
+    "horasBuenas": 23
+   }
+  ],
+  "ejemplo": {
+   "t": "2026-09-03T00:00",
+   "Hs": 0.48,
+   "T": 6.05,
+   "dir": 330,
+   "HsRompe": 0.366,
+   "score": 5.5
+  }
+ },
+ {
+  "spot": {
+   "nombre": "Zurriola (Donostia)",
+   "latR": 43.323,
+   "lonR": -1.986,
+   "latO": 43.29,
+   "lonO": -1.97,
+   "orient": "NW",
+   "fondo": "barra de arena",
+   "tipo": "beach break"
+  },
+  "bat": {
+   "xh": [
+    {
+     "x": 0,
+     "h": 55.1
+    },
+    {
+     "x": 973,
+     "h": 24.2
+    },
+    {
+     "x": 1946,
+     "h": 5.3
+    },
+    {
+     "x": 2918,
+     "h": 16.8
+    },
+    {
+     "x": 3891,
+     "h": 20
+    }
+   ],
+   "dTotal": 3891,
+   "hRompe": 20
+  },
+  "scoreGlobal": 6.2,
+  "dias": [
+   {
+    "dia": "2026-08-30",
+    "scoreMedio": 6.6,
+    "scoreMax": 6.7,
+    "HsRompeMax": 0.674,
+    "TMedio": 7.8,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-08-31",
+    "scoreMedio": 7.2,
+    "scoreMax": 7.6,
+    "HsRompeMax": 0.909,
+    "TMedio": 8.3,
+    "horasBuenas": 18
+   },
+   {
+    "dia": "2026-09-01",
+    "scoreMedio": 6.8,
+    "scoreMax": 7.4,
+    "HsRompeMax": 0.845,
+    "TMedio": 8.3,
+    "horasBuenas": 5
+   },
+   {
+    "dia": "2026-09-02",
+    "scoreMedio": 5.8,
+    "scoreMax": 6.4,
+    "HsRompeMax": 0.593,
+    "TMedio": 6.7,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-03",
+    "scoreMedio": 5.3,
+    "scoreMax": 5.5,
+    "HsRompeMax": 0.386,
+    "TMedio": 5.9,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-04",
+    "scoreMedio": 5.2,
+    "scoreMax": 5.5,
+    "HsRompeMax": 0.371,
+    "TMedio": 6.4,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-05",
+    "scoreMedio": 5.5,
+    "scoreMax": 7.2,
+    "HsRompeMax": 0.419,
+    "TMedio": 7.9,
+    "horasBuenas": 3
+   },
+   {
+    "dia": "2026-09-06",
+    "scoreMedio": 6.9,
+    "scoreMax": 7.7,
+    "HsRompeMax": 0.635,
+    "TMedio": 8.9,
+    "horasBuenas": 11
+   }
+  ],
+  "ejemplo": {
+   "t": "2026-09-03T00:00",
+   "Hs": 0.5,
+   "T": 5.8,
+   "dir": 331,
+   "HsRompe": 0.343,
+   "score": 5.4
+  }
+ },
+ {
+  "spot": {
+   "nombre": "Zarautz (Gipuzkoa)",
+   "latR": 43.286,
+   "lonR": -2.168,
+   "latO": 43.25,
+   "lonO": -2.152,
+   "orient": "NW",
+   "fondo": "barra de arena",
+   "tipo": "beach break"
+  },
+  "bat": {
+   "xh": [
+    {
+     "x": 0,
+     "h": 162.1
+    },
+    {
+     "x": 1052,
+     "h": 134.1
+    },
+    {
+     "x": 2104,
+     "h": 111.7
+    },
+    {
+     "x": 3156,
+     "h": 50.7
+    },
+    {
+     "x": 4207,
+     "h": 10.2
+    }
+   ],
+   "dTotal": 4207,
+   "hRompe": 10.2
+  },
+  "scoreGlobal": 6,
+  "dias": [
+   {
+    "dia": "2026-08-30",
+    "scoreMedio": 6.4,
+    "scoreMax": 6.5,
+    "HsRompeMax": 0.621,
+    "TMedio": 7.6,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-08-31",
+    "scoreMedio": 7,
+    "scoreMax": 7.4,
+    "HsRompeMax": 0.856,
+    "TMedio": 8.2,
+    "horasBuenas": 16
+   },
+   {
+    "dia": "2026-09-01",
+    "scoreMedio": 6.6,
+    "scoreMax": 7.2,
+    "HsRompeMax": 0.791,
+    "TMedio": 8.2,
+    "horasBuenas": 3
+   },
+   {
+    "dia": "2026-09-02",
+    "scoreMedio": 5.6,
+    "scoreMax": 6.2,
+    "HsRompeMax": 0.55,
+    "TMedio": 6.6,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-03",
+    "scoreMedio": 5.1,
+    "scoreMax": 5.3,
+    "HsRompeMax": 0.337,
+    "TMedio": 5.8,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-04",
+    "scoreMedio": 5.1,
+    "scoreMax": 5.3,
+    "HsRompeMax": 0.337,
+    "TMedio": 6.2,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-05",
+    "scoreMedio": 5.4,
+    "scoreMax": 7.1,
+    "HsRompeMax": 0.4,
+    "TMedio": 7.8,
+    "horasBuenas": 3
+   },
+   {
+    "dia": "2026-09-06",
+    "scoreMedio": 6.8,
+    "scoreMax": 7.7,
+    "HsRompeMax": 0.609,
+    "TMedio": 8.9,
+    "horasBuenas": 11
+   }
+  ],
+  "ejemplo": {
+   "t": "2026-09-03T00:00",
+   "Hs": 0.48,
+   "T": 5.65,
+   "dir": 335,
+   "HsRompe": 0.31,
+   "score": 5.2
+  }
+ },
+ {
+  "spot": {
+   "nombre": "Laga (Bizkaia)",
+   "latR": 43.378,
+   "lonR": -2.614,
+   "latO": 43.345,
+   "lonO": -2.598,
+   "orient": "NW",
+   "fondo": "roca/arena",
+   "tipo": "beach break"
+  },
+  "bat": {
+   "xh": [
+    {
+     "x": 0,
+     "h": 457.1
+    },
+    {
+     "x": 973,
+     "h": 429.4
+    },
+    {
+     "x": 1945,
+     "h": 198.4
+    },
+    {
+     "x": 2918,
+     "h": 173.7
+    },
+    {
+     "x": 3891,
+     "h": 113.8
+    }
+   ],
+   "dTotal": 3891,
+   "hRompe": 113.8
+  },
+  "scoreGlobal": 5.9,
+  "dias": [
+   {
+    "dia": "2026-08-30",
+    "scoreMedio": 6.3,
+    "scoreMax": 6.4,
+    "HsRompeMax": 0.608,
+    "TMedio": 7.2,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-08-31",
+    "scoreMedio": 6.9,
+    "scoreMax": 7.2,
+    "HsRompeMax": 0.806,
+    "TMedio": 7.9,
+    "horasBuenas": 13
+   },
+   {
+    "dia": "2026-09-01",
+    "scoreMedio": 6.5,
+    "scoreMax": 6.9,
+    "HsRompeMax": 0.721,
+    "TMedio": 7.7,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-02",
+    "scoreMedio": 5.6,
+    "scoreMax": 6.2,
+    "HsRompeMax": 0.552,
+    "TMedio": 6.2,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-03",
+    "scoreMedio": 5.2,
+    "scoreMax": 5.5,
+    "HsRompeMax": 0.368,
+    "TMedio": 5.5,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-04",
+    "scoreMedio": 5.2,
+    "scoreMax": 5.5,
+    "HsRompeMax": 0.368,
+    "TMedio": 5.8,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-05",
+    "scoreMedio": 5.4,
+    "scoreMax": 7,
+    "HsRompeMax": 0.368,
+    "TMedio": 7.6,
+    "horasBuenas": 1
+   },
+   {
+    "dia": "2026-09-06",
+    "scoreMedio": 6.5,
+    "scoreMax": 7.4,
+    "HsRompeMax": 0.552,
+    "TMedio": 8.5,
+    "horasBuenas": 9
+   }
+  ],
+  "ejemplo": {
+   "t": "2026-09-03T00:00",
+   "Hs": 0.44,
+   "T": 5.3,
+   "dir": 339,
+   "HsRompe": 0.311,
+   "score": 5.2
+  }
+ },
+ {
+  "spot": {
+   "nombre": "Berria (Cantabria)",
+   "latR": 43.433,
+   "lonR": -3.752,
+   "latO": 43.4,
+   "lonO": -3.736,
+   "orient": "N",
+   "fondo": "barra de arena",
+   "tipo": "beach break"
+  },
+  "bat": {
+   "xh": [
+    {
+     "x": 0,
+     "h": 28.4
+    },
+    {
+     "x": 973,
+     "h": 46.2
+    },
+    {
+     "x": 1945,
+     "h": 25.6
+    },
+    {
+     "x": 2918,
+     "h": 15.1
+    },
+    {
+     "x": 3890,
+     "h": 0.5
+    }
+   ],
+   "dTotal": 3890,
+   "hRompe": 0.5
+  },
+  "scoreGlobal": 5.8,
+  "dias": [
+   {
+    "dia": "2026-08-30",
+    "scoreMedio": 5.6,
+    "scoreMax": 5.6,
+    "HsRompeMax": 0.39,
+    "TMedio": 7.4,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-08-31",
+    "scoreMedio": 5.6,
+    "scoreMax": 5.6,
+    "HsRompeMax": 0.39,
+    "TMedio": 8.3,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-01",
+    "scoreMedio": 5.6,
+    "scoreMax": 5.6,
+    "HsRompeMax": 0.39,
+    "TMedio": 8.2,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-02",
+    "scoreMedio": 5.6,
+    "scoreMax": 5.6,
+    "HsRompeMax": 0.39,
+    "TMedio": 6.6,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-03",
+    "scoreMedio": 5.6,
+    "scoreMax": 5.6,
+    "HsRompeMax": 0.39,
+    "TMedio": 5.6,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-04",
+    "scoreMedio": 5.6,
+    "scoreMax": 5.6,
+    "HsRompeMax": 0.39,
+    "TMedio": 6.5,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-05",
+    "scoreMedio": 5.8,
+    "scoreMax": 7.1,
+    "HsRompeMax": 0.39,
+    "TMedio": 8.2,
+    "horasBuenas": 4
+   },
+   {
+    "dia": "2026-09-06",
+    "scoreMedio": 6.9,
+    "scoreMax": 7.1,
+    "HsRompeMax": 0.39,
+    "TMedio": 9.1,
+    "horasBuenas": 21
+   }
+  ],
+  "ejemplo": {
+   "t": "2026-09-03T00:00",
+   "Hs": 0.52,
+   "T": 6,
+   "dir": 325,
+   "HsRompe": 0.39,
+   "score": 5.6
+  }
+ },
+ {
+  "spot": {
+   "nombre": "Mundaka (Bizkaia)",
+   "latR": 43.317,
+   "lonR": -2.692,
+   "latO": 43.28,
+   "lonO": -2.676,
+   "orient": "NW",
+   "fondo": "barra ría",
+   "tipo": "rivermouth point"
+  },
+  "bat": {
+   "xh": [
+    {
+     "x": 0,
+     "h": 155
+    },
+    {
+     "x": 1078,
+     "h": 69.3
+    },
+    {
+     "x": 2157,
+     "h": 22.9
+    },
+    {
+     "x": 3235,
+     "h": 26
+    },
+    {
+     "x": 4313,
+     "h": 158.9
+    }
+   ],
+   "dTotal": 4313,
+   "hRompe": 158.9
+  },
+  "scoreGlobal": 3.1,
+  "dias": [
+   {
+    "dia": "2026-08-30",
+    "scoreMedio": 3.5,
+    "scoreMax": 3.6,
+    "HsRompeMax": 0.608,
+    "TMedio": 7.2,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-08-31",
+    "scoreMedio": 4.1,
+    "scoreMax": 4.4,
+    "HsRompeMax": 0.806,
+    "TMedio": 7.9,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-01",
+    "scoreMedio": 3.7,
+    "scoreMax": 4.1,
+    "HsRompeMax": 0.721,
+    "TMedio": 7.7,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-02",
+    "scoreMedio": 2.8,
+    "scoreMax": 3.4,
+    "HsRompeMax": 0.552,
+    "TMedio": 6.2,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-03",
+    "scoreMedio": 2.4,
+    "scoreMax": 2.7,
+    "HsRompeMax": 0.368,
+    "TMedio": 5.5,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-04",
+    "scoreMedio": 2.4,
+    "scoreMax": 2.7,
+    "HsRompeMax": 0.368,
+    "TMedio": 5.8,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-05",
+    "scoreMedio": 2.6,
+    "scoreMax": 4.2,
+    "HsRompeMax": 0.368,
+    "TMedio": 7.6,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-06",
+    "scoreMedio": 3.7,
+    "scoreMax": 4.6,
+    "HsRompeMax": 0.552,
+    "TMedio": 8.5,
+    "horasBuenas": 0
+   }
+  ],
+  "ejemplo": {
+   "t": "2026-09-03T00:00",
+   "Hs": 0.44,
+   "T": 5.3,
+   "dir": 339,
+   "HsRompe": 0.311,
+   "score": 2.4
+  }
+ }
+]
