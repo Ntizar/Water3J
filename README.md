@@ -27,8 +27,8 @@ Crear una web app con Three.js que simule de forma científica y visualmente esp
 
 | | |
 |---|---|
-| **Tests** | **7/14 pasando** — ver `tests/registro.json` · ejecutar: `node tests/node-run.mjs` |
-| **Fase actual** | 1-2: física core validada (dispersión, Gerstner, JONSWAP, shoaling, refracción, flotabilidad, robustez) |
+| **Tests** | **10/14 pasando** — ver `tests/registro.json` · ejecutar: `node tests/node-run.mjs && node tests/tanda3.mjs` |
+| **Fase actual** | 2-3: física core + SWE + estructuras validados. Pendientes: T10-T13 (UI/render/informes, requieren app) |
 | **Docs** | 9 documentos en `docs/` (teoría, referencias, arquitectura, tests) |
 
 ## Estructura

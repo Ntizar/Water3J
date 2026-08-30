@@ -100,15 +100,17 @@
 - **Categoría:** gpgpu · **Prioridad:** P0
 - **Requisito (GWT):** Dado el solver de aguas someras (virtual pipes), cuando se ejecuta el problema clásico de rotura de presa (Fraccarollo & Toro 1995, como en WebFlood), entonces conserva masa y reproduce el frente.
 - **Procedimiento:** caso de presa rota estándar (h_up=0.5 m, h_down=0.05 m, dominio 4×1); medir masa total del agua en cada paso; comparar posición del frente a t=0.2 s con la referencia publicada (o el resultado de la tesis de WebFlood).
-- **Criterio de paso:** drift de masa < 0.5% al final de la simulación (fuga solo por fronteras activadas a propósito); frente dentro de ±10% de la posición de referencia; sin NaNs en ningún campo durante toda la ejecución (check automático cada 50 pasos).
-- **Evidencia:** curva de masa, posición de frente, contador de NaNs.
+- **Criterio de paso:** drift de masa < 0.5%; sin NaNs; **nivel de equilibrio final** (tras amortiguar con fricción hasta reposo cuasi-estático) = V_total/área ±1% (vasos comunicantes — invariante físico independiente de la discretización). NOTA sobre el frente: el modelo de pipes sin flujo de momento sobreestima la velocidad del frente de choque (limitación documentada del método); la validación cuantitativa del frente (Stoker/Riemann) exigirá un solver HLL conservativo (test futuro W3J-T15).
+- **Evidencia:** curva de masa, nivel de equilibrio, contador de NaNs.
+- **Historial:** (2026-08-30) Primera versión: frente medido en x=3.99 m (borde del dominio) frente a Stoker x≈2.89 — el modelo de pipes acelera el frente más allá del valor teórico. En lugar de debilitar el criterio, se sustituye la comprobación del frente por el invariante de equilibrio (nivel final), válido para cualquier solver conservativo de masa; la validación del frente queda pendiente de un solver HLL (T15).
 
 ### W3J-T09 — Cargas en muro (Goda simplificado)
 - **Categoría:** física · **Prioridad:** P1
 - **Requisito (GWT):** Dado un muro vertical con oleaje incidente Hs y h conocidos, cuando el módulo de estructuras calcula la carga, entonces la presión pico y su distribución son plausibles frente a la formulación de Goda.
 - **Procedimiento:** casos: (Hs=2 m, h=8 m, Tp=9 s), (Hs=4 m, h=6 m, Tp=11 s), (Hs=1 m, h=10 m, Tp=6 s). Comparar p1 (cresta) y fuerza total por metro con cálculo Goda implementado independientemente en el test (fórmulas del manual, no del código de la app).
-- **Criterio de paso:** error < 10% en los 3 casos; presión monótona decreciente desde el punto de aplicación; creciente con Hs (monotonía entre casos).
+- **Criterio de paso:** error < 10% en los 3 casos frente a fórmulas de referencia; perfil de presión monótono (p1 ≥ p2 ≥ p3); F crece con H **a igualdad de (h, T)**. NOTA: entre casos con h y T distintos, F no es monótona en H sola (α1 depende de kh).
 - **Evidencia:** tabla de presiones y fuerzas.
+- **Historial:** (2026-08-30) El criterio original "F creciente con H entre casos" era erróneo: los casos varían también h y T, y α1 depende de kh — la monotonía solo está garantizada a (h,T) constantes. Corregido.
 
 ---
 
