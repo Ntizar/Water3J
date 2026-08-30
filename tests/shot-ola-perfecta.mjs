@@ -1,0 +1,11 @@
+import puppeteer from 'puppeteer';
+const b = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox', '--enable-unsafe-swiftshader'] });
+const p = await b.newPage();
+const errs = [];
+p.on('pageerror', e => errs.push(e.message));
+await p.setViewport({ width: 1000, height: 850 });
+await p.goto('file:///C:/Users/d_ant/Projects/Water3J/tests/ola-perfecta.html?v=2', { waitUntil: 'networkidle2', timeout: 60000 });
+await new Promise(r => setTimeout(r, 5000));
+await p.screenshot({ path: 'C:/Users/d_ant/Projects/Water3J/tests/ola-perfecta-v2.png' });
+console.log('capturado v2. errores JS:', errs.length ? errs.join(' | ') : 'ninguno');
+await b.close();
