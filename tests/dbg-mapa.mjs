@@ -1,0 +1,14 @@
+import puppeteer from 'puppeteer';
+const b = await puppeteer.launch({ headless: 'new', args: ['--no-sandbox'] });
+const p = await b.newPage();
+const errs = [];
+p.on('pageerror', e => errs.push('PAGEERROR: ' + e.message));
+p.on('console', m => { if (m.type() === 'error') errs.push('CONSOLA: ' + m.text()); });
+await p.setViewport({ width: 1000, height: 700 });
+await p.goto('file:///C:/Users/d_ant/Projects/Water3J/tests/mapa-criticos.html', { waitUntil: 'networkidle2', timeout: 60000 });
+await new Promise(r => setTimeout(r, 4000));
+console.log('errores:', JSON.stringify(errs, null, 1) || 'ninguno');
+console.log('L:', await p.evaluate(() => typeof window.L));
+console.log('puntos en HTML:', await p.evaluate(() => typeof puntos !== 'undefined' ? puntos.length : 'sin puntos'));
+console.log('capas:', await p.evaluate(() => { try { return Object.keys(m._layers).length; } catch (e) { return 'error: ' + e.message; } }));
+await b.close();

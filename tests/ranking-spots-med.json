@@ -1,0 +1,590 @@
+[
+ {
+  "spot": {
+   "nombre": "San Juan (Alicante)",
+   "latR": 38.39,
+   "lonR": -0.44,
+   "latO": 38.35,
+   "lonO": -0.4,
+   "orient": "NE",
+   "fondo": "barra de arena",
+   "tipo": "beach break"
+  },
+  "bat": {
+   "xh": [
+    {
+     "x": 0,
+     "h": 17
+    },
+    {
+     "x": 1413,
+     "h": 16.6
+    },
+    {
+     "x": 2826,
+     "h": 9.9
+    },
+    {
+     "x": 4239,
+     "h": 12
+    },
+    {
+     "x": 5652,
+     "h": 29.8
+    }
+   ],
+   "dTotal": 5652,
+   "hRompe": "29.8"
+  },
+  "scoreGlobal": 5.7,
+  "dias": [
+   {
+    "dia": "2026-08-30",
+    "scoreMedio": 5.4,
+    "HsRompeMax": 0.188,
+    "TMedio": 4.9,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-08-31",
+    "scoreMedio": 5.3,
+    "HsRompeMax": 0.141,
+    "TMedio": 3.8,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-01",
+    "scoreMedio": 6,
+    "HsRompeMax": 0.397,
+    "TMedio": 3.5,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-02",
+    "scoreMedio": 6.2,
+    "HsRompeMax": 0.396,
+    "TMedio": 4.1,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-03",
+    "scoreMedio": 5.8,
+    "HsRompeMax": 0.297,
+    "TMedio": 3.9,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-04",
+    "scoreMedio": 5.4,
+    "HsRompeMax": 0.184,
+    "TMedio": 3.7,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-05",
+    "scoreMedio": 5.5,
+    "HsRompeMax": 0.212,
+    "TMedio": 3.8,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-06",
+    "scoreMedio": 5.7,
+    "HsRompeMax": 0.241,
+    "TMedio": 4.1,
+    "horasBuenas": 0
+   }
+  ],
+  "zona": "mediterraneo"
+ },
+ {
+  "spot": {
+   "nombre": "El Portet (Moraira)",
+   "latR": 38.676,
+   "lonR": 0.147,
+   "latO": 38.635,
+   "lonO": 0.18,
+   "orient": "E",
+   "fondo": "roca/arena",
+   "tipo": "beach break"
+  },
+  "bat": {
+   "xh": [
+    {
+     "x": 0,
+     "h": 49.1
+    },
+    {
+     "x": 1346,
+     "h": 46.2
+    },
+    {
+     "x": 2692,
+     "h": 43.5
+    },
+    {
+     "x": 4039,
+     "h": 42.2
+    },
+    {
+     "x": 5385,
+     "h": 32.7
+    }
+   ],
+   "dTotal": 5385,
+   "hRompe": "32.7"
+  },
+  "scoreGlobal": 5.6,
+  "dias": [
+   {
+    "dia": "2026-08-30",
+    "scoreMedio": 5.6,
+    "HsRompeMax": 0.226,
+    "TMedio": 4.5,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-08-31",
+    "scoreMedio": 5.3,
+    "HsRompeMax": 0.212,
+    "TMedio": 3.3,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-01",
+    "scoreMedio": 5.8,
+    "HsRompeMax": 0.339,
+    "TMedio": 3.5,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-02",
+    "scoreMedio": 6.1,
+    "HsRompeMax": 0.339,
+    "TMedio": 3.9,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-03",
+    "scoreMedio": 5.6,
+    "HsRompeMax": 0.255,
+    "TMedio": 3.8,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-04",
+    "scoreMedio": 5.4,
+    "HsRompeMax": 0.17,
+    "TMedio": 3.5,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-05",
+    "scoreMedio": 5.5,
+    "HsRompeMax": 0.184,
+    "TMedio": 3.6,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-06",
+    "scoreMedio": 5.6,
+    "HsRompeMax": 0.24,
+    "TMedio": 4,
+    "horasBuenas": 0
+   }
+  ],
+  "zona": "mediterraneo"
+ },
+ {
+  "spot": {
+   "nombre": "Les Bovetes (Dénia)",
+   "latR": 38.808,
+   "lonR": 0.006,
+   "latO": 38.77,
+   "lonO": 0.04,
+   "orient": "E",
+   "fondo": "barra de arena",
+   "tipo": "beach break"
+  },
+  "bat": {
+   "xh": [
+    {
+     "x": 0,
+     "h": 197.3
+    },
+    {
+     "x": 1288,
+     "h": 283.6
+    },
+    {
+     "x": 2576,
+     "h": 104.6
+    },
+    {
+     "x": 3864,
+     "h": 61.5
+    },
+    {
+     "x": 5151,
+     "h": 43.5
+    }
+   ],
+   "dTotal": 5151,
+   "hRompe": "43.5"
+  },
+  "scoreGlobal": 5.5,
+  "dias": [
+   {
+    "dia": "2026-08-30",
+    "scoreMedio": 5.4,
+    "HsRompeMax": 0.184,
+    "TMedio": 4.9,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-08-31",
+    "scoreMedio": 5.2,
+    "HsRompeMax": 0.127,
+    "TMedio": 3.5,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-01",
+    "scoreMedio": 5.7,
+    "HsRompeMax": 0.297,
+    "TMedio": 3.5,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-02",
+    "scoreMedio": 5.9,
+    "HsRompeMax": 0.311,
+    "TMedio": 4.1,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-03",
+    "scoreMedio": 5.5,
+    "HsRompeMax": 0.226,
+    "TMedio": 3.9,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-04",
+    "scoreMedio": 5.4,
+    "HsRompeMax": 0.156,
+    "TMedio": 3.6,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-05",
+    "scoreMedio": 5.5,
+    "HsRompeMax": 0.184,
+    "TMedio": 3.7,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-06",
+    "scoreMedio": 5.6,
+    "HsRompeMax": 0.212,
+    "TMedio": 4,
+    "horasBuenas": 0
+   }
+  ],
+  "zona": "mediterraneo"
+ },
+ {
+  "spot": {
+   "nombre": "Gandia Norte",
+   "latR": 38.988,
+   "lonR": -0.156,
+   "latO": 38.95,
+   "lonO": -0.12,
+   "orient": "E",
+   "fondo": "barra de arena",
+   "tipo": "beach break"
+  },
+  "bat": {
+   "xh": [
+    {
+     "x": 0,
+     "h": 3.1
+    },
+    {
+     "x": 1312,
+     "h": 0.9
+    },
+    {
+     "x": 2624,
+     "h": 3.5
+    },
+    {
+     "x": 3936,
+     "h": 6.3
+    },
+    {
+     "x": 5248,
+     "h": 1.9
+    }
+   ],
+   "dTotal": 5248,
+   "hRompe": "1.9"
+  },
+  "scoreGlobal": 5.5,
+  "dias": [
+   {
+    "dia": "2026-08-30",
+    "scoreMedio": 5.8,
+    "HsRompeMax": 0.383,
+    "TMedio": 3.9,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-08-31",
+    "scoreMedio": 5.4,
+    "HsRompeMax": 0.23,
+    "TMedio": 3,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-01",
+    "scoreMedio": 5.4,
+    "HsRompeMax": 0.206,
+    "TMedio": 3.7,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-02",
+    "scoreMedio": 5.6,
+    "HsRompeMax": 0.236,
+    "TMedio": 4.1,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-03",
+    "scoreMedio": 5.4,
+    "HsRompeMax": 0.181,
+    "TMedio": 3.6,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-04",
+    "scoreMedio": 5.5,
+    "HsRompeMax": 0.366,
+    "TMedio": 3.3,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-05",
+    "scoreMedio": 5.4,
+    "HsRompeMax": 0.275,
+    "TMedio": 3,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-06",
+    "scoreMedio": 5.3,
+    "HsRompeMax": 0.177,
+    "TMedio": 3.5,
+    "horasBuenas": 0
+   }
+  ],
+  "zona": "mediterraneo"
+ },
+ {
+  "spot": {
+   "nombre": "Las Arenas (Valencia)",
+   "latR": 39.474,
+   "lonR": -0.325,
+   "latO": 39.43,
+   "lonO": -0.29,
+   "orient": "E",
+   "fondo": "barra de arena",
+   "tipo": "beach break"
+  },
+  "bat": {
+   "xh": [
+    {
+     "x": 0,
+     "h": 21.5
+    },
+    {
+     "x": 1435,
+     "h": 17.4
+    },
+    {
+     "x": 2871,
+     "h": 12
+    },
+    {
+     "x": 4306,
+     "h": 5.2
+    },
+    {
+     "x": 5742,
+     "h": 4.4
+    }
+   ],
+   "dTotal": 5742,
+   "hRompe": "4.4"
+  },
+  "scoreGlobal": 5.4,
+  "dias": [
+   {
+    "dia": "2026-08-30",
+    "scoreMedio": 5.7,
+    "HsRompeMax": 0.361,
+    "TMedio": 4,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-08-31",
+    "scoreMedio": 5.7,
+    "HsRompeMax": 0.336,
+    "TMedio": 3,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-01",
+    "scoreMedio": 5.3,
+    "HsRompeMax": 0.166,
+    "TMedio": 3.4,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-02",
+    "scoreMedio": 5.5,
+    "HsRompeMax": 0.205,
+    "TMedio": 4.1,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-03",
+    "scoreMedio": 5.3,
+    "HsRompeMax": 0.147,
+    "TMedio": 3.7,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-04",
+    "scoreMedio": 5.4,
+    "HsRompeMax": 0.263,
+    "TMedio": 3.3,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-05",
+    "scoreMedio": 5.4,
+    "HsRompeMax": 0.235,
+    "TMedio": 3.1,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-06",
+    "scoreMedio": 5.3,
+    "HsRompeMax": 0.185,
+    "TMedio": 3.7,
+    "horasBuenas": 0
+   }
+  ],
+  "zona": "mediterraneo"
+ },
+ {
+  "spot": {
+   "nombre": "Cala del Portet (Dénia)",
+   "latR": 38.834,
+   "lonR": 0.106,
+   "latO": 38.795,
+   "lonO": 0.14,
+   "orient": "E",
+   "fondo": "roca",
+   "tipo": "reef"
+  },
+  "bat": {
+   "xh": [
+    {
+     "x": 0,
+     "h": 124.8
+    },
+    {
+     "x": 1311,
+     "h": 617.5
+    },
+    {
+     "x": 2621,
+     "h": 165.3
+    },
+    {
+     "x": 3932,
+     "h": 40.9
+    },
+    {
+     "x": 5242,
+     "h": 2.7
+    }
+   ],
+   "dTotal": 5242,
+   "hRompe": "2.7"
+  },
+  "scoreGlobal": 3.5,
+  "dias": [
+   {
+    "dia": "2026-08-30",
+    "scoreMedio": 3.6,
+    "HsRompeMax": 0.231,
+    "TMedio": 4.3,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-08-31",
+    "scoreMedio": 3.3,
+    "HsRompeMax": 0.193,
+    "TMedio": 3.3,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-01",
+    "scoreMedio": 3.6,
+    "HsRompeMax": 0.287,
+    "TMedio": 3.6,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-02",
+    "scoreMedio": 3.8,
+    "HsRompeMax": 0.3,
+    "TMedio": 4.1,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-03",
+    "scoreMedio": 3.5,
+    "HsRompeMax": 0.207,
+    "TMedio": 3.9,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-04",
+    "scoreMedio": 3.4,
+    "HsRompeMax": 0.169,
+    "TMedio": 3.3,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-05",
+    "scoreMedio": 3.4,
+    "HsRompeMax": 0.168,
+    "TMedio": 3.6,
+    "horasBuenas": 0
+   },
+   {
+    "dia": "2026-09-06",
+    "scoreMedio": 3.5,
+    "HsRompeMax": 0.207,
+    "TMedio": 4,
+    "horasBuenas": 0
+   }
+  ],
+  "zona": "mediterraneo"
+ }
+]

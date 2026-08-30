@@ -1,0 +1,22 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>html,body{margin:0;padding:0} #m{width:1000px;height:640px}
+.etq{font:600 11px system-ui;background:rgba(255,255,255,.92);border:1px solid #2563eb;border-radius:6px;padding:2px 6px}</style>
+</head><body><div id="m"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const puntos = [{"nombre":"El Brusco (Noja)","lat":43.477,"lon":-3.707,"score":6.8,"HsMax":1.213},{"nombre":"Somo (Cantabria)","lat":43.436,"lon":-3.729,"score":6.5,"HsMax":1.063},{"nombre":"Los Locos (Suances)","lat":43.462,"lon":-4.048,"score":6.5,"HsMax":1.044},{"nombre":"Zurriola (Donostia)","lat":43.323,"lon":-1.986,"score":6.2,"HsMax":0.909},{"nombre":"Zarautz (Gipuzkoa)","lat":43.286,"lon":-2.168,"score":6,"HsMax":0.856},{"nombre":"Laga (Bizkaia)","lat":43.378,"lon":-2.614,"score":5.9,"HsMax":0.806},{"nombre":"Berria (Cantabria)","lat":43.433,"lon":-3.752,"score":5.8,"HsMax":0.39},{"nombre":"San Juan (Alicante)","lat":38.39,"lon":-0.44,"score":5.7,"HsMax":0.397},{"nombre":"El Portet (Moraira)","lat":38.676,"lon":0.147,"score":5.6,"HsMax":0.339},{"nombre":"Les Bovetes (Dénia)","lat":38.808,"lon":0.006,"score":5.5,"HsMax":0.311},{"nombre":"Gandia Norte","lat":38.988,"lon":-0.156,"score":5.5,"HsMax":0.383},{"nombre":"Las Arenas (Valencia)","lat":39.474,"lon":-0.325,"score":5.4,"HsMax":0.361},{"nombre":"Cala del Portet (Dénia)","lat":38.834,"lon":0.106,"score":3.5,"HsMax":0.3},{"nombre":"Mundaka (Bizkaia)","lat":43.317,"lon":-2.692,"score":3.1,"HsMax":0.806}];
+const mapa = L.map('m', { zoomControl: false, attributionControl: false }).setView([41.3, -1.5], 6);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapa);
+window.__listo = false;
+for (const s of puntos) {
+  const color = s.score >= 6.5 ? '#1a9850' : s.score >= 5.5 ? '#f4a742' : '#c0392b';
+  L.circleMarker([s.lat, s.lon], { radius: 11, color: '#fff', weight: 2, fillColor: color, fillOpacity: 0.95 }).addTo(mapa);
+  L.tooltip({ permanent: true, direction: 'top', offset: [0, -8], className: 'etq' })
+   .setLatLng([s.lat, s.lon]).setContent(`${s.nombre} — ${s.score}/10`).addTo(mapa);
+}
+window.__err = null;
+// sanity: contar capas
+setTimeout(() => { window.__nCapas = Object.keys(mapa._layers).length; }, 500);
+setTimeout(() => window.__listo = true, 2500);
+</script></body></html>
