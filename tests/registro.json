@@ -1,7 +1,28 @@
 {
   "_descripcion": "Registro de auditoría de tests Water3J. Se actualiza en cada ejecución del runner.",
-  "ultimo_run": null,
-  "commit": null,
-  "resumen": { "pass": 0, "fail": 0, "pending": 14, "omitted": 0 },
-  "tests": {}
+  "ultimo_run": "2026-08-30",
+  "commit": "ver git log (tests T01-T03 en verde)",
+  "resumen": {
+    "pass": 3,
+    "fail": 0,
+    "pending": 11,
+    "omitted": 0
+  },
+  "tests": {
+    "W3J-T01": {
+      "estado": "PASS",
+      "medida": "error máx 0.0000% en 20 casos; profundo ±0.001%, somero auténtico (T=20s,h=2m) ±2% OK",
+      "criterio": "error < 0.5%"
+    },
+    "W3J-T02": {
+      "estado": "PASS",
+      "medida": "RMS 0.0000%; H pico-valle err 0.000%; fase OK",
+      "criterio": "RMS < 0.5%; Hpp ±0.5%"
+    },
+    "W3J-T03": {
+      "estado": "PASS",
+      "medida": "Hs 3.05 vs teo 3.06 m (err 0.47%); Tp 7.1 s (err 0.00%); JONSWAP 3.05 > PM 2.46 (coherente)",
+      "criterio": "Hs ±5%, Tp ±3%"
+    }
+  }
 }

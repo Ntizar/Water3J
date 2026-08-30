@@ -44,6 +44,7 @@
 - **Procedimiento:** para L = [5, 20, 50, 100, 200] m y h = [3, 10, 50, 1000] m, calcular `c = ω/k` del módulo y comparar con la solución exacta de `ω² = g·k·tanh(k·h)` (resolver k por Newton-Raphson en el test como referencia independiente).
 - **Criterio de paso:** error relativo < 0.5% en los 20 casos. Verificación adicional de regímenes: c(L=200, h=1000) ≈ √(g·L/2π) ≈ 17.7 m/s (±1%) y c(L=20, h=3) ≈ √(g·h) ≈ 5.42 m/s (±2%, aguas someras).
 - **Evidencia:** tabla de 20 comparaciones en el informe del runner.
+- **Historial:** (2026-08-30) El caso somero original (L=20 m, h=3 m, kh≈0.47) estaba en régimen intermedio, no somero. Corregido el CASO (T=20 s, h=2 m), no el criterio. Aprendizaje: elegir caso de régimen verificando kh, no h/L a ojo.
 
 ### W3J-T02 — Campo Gerstner correcto
 - **Categoría:** física · **Prioridad:** P0
@@ -51,6 +52,7 @@
 - **Procedimiento:** 1 sola ola: d=(1,0), a=1 m, L=50 m, steepness correspondiente. Muestrear η(x, t=T/4) en 100 puntos de un periodo espacial. Comparar con la solución analítica x_shift = x - a·sin(kx), η = a·cos(kx). Comprobar también que la altura máxima pico-a-valle = 2a (±0.5%).
 - **Criterio de paso:** error RMS < 0.5% del valor teórico en los 100 puntos; fase correcta en t=T/4 (η máx en x=0).
 - **Evidencia:** RMS y máximos en el informe.
+- **Historial:** (2026-08-30) El check de fase original exigía el máximo en x=0 en t=T/4 — físicamente erróneo (en T/4 la cresta se ha desplazado un cuarto de λ). Corregido: cresta en x=0 en t=0. El criterio de fase ahora es correcto.
 
 ### W3J-T03 — Superposición espectral normalizada (JONSWAP)
 - **Categoría:** física · **Prioridad:** P0
@@ -58,6 +60,7 @@
 - **Procedimiento:** generar N=200 componentes; calcular Hs = 4√(m0) y Tp desde el pico de S(ω); comparar con Hs, Tp de entrada.
 - **Criterio de paso:** Hs derivada dentro de ±5% de la de entrada; Tp dentro de ±3%; energía total (integral de S) conservada ±1% tras discretizar. Además, Hs(JONSWAP γ=3.3) < Hs(PM) con mismos U y F (pico más energético no implica más altura — validar que la comparación es coherente con la literatura).
 - **Evidencia:** Hs/Tp entrada vs derivada.
+- **Historial:** (2026-08-30) Primera ejecución: el test PASABA con Hs=1908 m (absurdo físico) porque módulo y referencia compartían la misma fórmula errónea de ωp. Corregidos AMBOS a la forma original de Hasselmann et al. (1973): ωp = 22·(g²/UF)^⅓, α = 0.076·(gF/U²)^-0.22. Lección: la referencia del test debe detectar errores físicos absurdos aunque "cuadren" numéricamente. Coherencia JONSWAP>PM (3.05 vs 2.46 m) validó la corrección. Además, el criterio original de coherencia (Hs_JONSWAP < Hs_PM) era erróneo: con mismo α, el pico de JONSWAP es más energético → Hs_JONSWAP > Hs_PM (3.05 vs 2.46 m, coherente con literatura).
 
 ### W3J-T04 — Shoaling (Green's law)
 - **Categoría:** física · **Prioridad:** P0
