@@ -11,7 +11,9 @@ const EMOD = async (lon, lat, tries = 4) => {
       const r = await fetch(`https://rest.emodnet-bathymetry.eu/depth_sample?geom=POINT(${lon.toFixed(4)}+${lat.toFixed(4)})`, { signal: AbortSignal.timeout(20000) });
       const t = await r.text();
       const j = JSON.parse(t);
-      if (typeof j.avg === 'number') return Math.abs(j.avg);  // EMODnet: prof. en mar negativa; abs() por seguridad
+      // Convencion EMODnet (T17): solo NEGATIVO es agua; positivo = tierra (sin profundidad valida)
+      if (typeof j.avg === 'number' && j.avg < 0) return -j.avg;
+      if (typeof j.avg === 'number' && j.avg >= 0) return null;  // tierra
     } catch (e) { /* retry */ }
     await new Promise(r => setTimeout(r, 1500 * (i + 1)));
   }

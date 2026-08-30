@@ -24,7 +24,10 @@ export async function descargarBateria(lat, lon, anchoKm = 8, n = 9) {
       const r = await fetch(url);
       if (!r.ok) throw new Error('HTTP ' + r.status);
       const d = await r.json();
-      return { ...p, h: d.avg != null ? Math.abs(d.avg) : null, fuente: 'EMODnet' };
+      // Convencion EMODnet (T17): NEGATIVO = agua (bajo nivel del mar), POSITIVO = tierra.
+      // En tierra no hay profundidad valida -> h=null ( mascara de costa), nunca abs().
+      const hAgua = d.avg != null && d.avg < 0 ? -d.avg : null;
+      return { ...p, h: hAgua, tierra: d.avg != null && d.avg >= 0, fuente: 'EMODnet' };
     } catch (e) {
       return { ...p, h: null, error: e.message };
     }

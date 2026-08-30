@@ -39,9 +39,12 @@ Dos aplicaciones en un repositorio:
 | T14 | motor 2D: dispersión, refracción Snell, rotura, determinismo | 8 |
 | T15 | separación real entre rayos, convergencia/divergencia | 4 |
 | T16 | cliente Puertos del Estado (parser, huecos -99.9) | 5 |
+| T17 | convención del signo EMODnet + máscara de costa (tanda10) | 7 |
 | ver-*.mjs | E2E headless (puppeteer + SwiftShader): mapa, 2D, puertos, informe | verificación |
 
-**Bugs reales cazados por la biblia**: huecos SIMAR tratados como datos válidos, vector perpendicular del rayo mal definido (refracción lateral incorrecta), clave `F` de Goda, convención de ángulos de propagación, redondeo en el invariante de rotura.
+**Bugs reales cazados por la biblia**: huecos SIMAR tratados como datos válidos, vector perpendicular del rayo mal definido (refracción lateral incorrecta), clave `F` de Goda, convención de ángulos de propagación, redondeo en el invariante de rotura, **convención del signo EMODnet** (T17: `Math.abs()` convertía elevaciones terrestres en "profundidades" → olas dentro de la tierra; correcto: negativo=agua, positivo=tierra → h=null).
+
+**Limitaciones honestas**: el DTM de EMODnet (~100 m) no resuelve bien la línea de costa — cerca de la orilla puede devolver valores ambiguos; la máscara T17 los trata como tierra (conservador). Los rayos terminan al romper y la rejilla visual se filtra a h>2 m. Los puntos de rotura exactos dependen de la calidad de la batimetría local (cartas náuticas de detalle o Lidar mejorarían la precisión en la última decena de metros).
 
 ### Fuentes de datos reales (conectadas y testadas)
 

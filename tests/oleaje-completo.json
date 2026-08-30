@@ -1,0 +1,359 @@
+[
+ {
+  "spot": {
+   "nombre": "Somo (Cantabria)",
+   "lat": 43.436,
+   "lon": -3.729,
+   "orient": "NW",
+   "ideal": [
+    0.8,
+    1.8
+   ]
+  },
+  "resumen": [
+   {
+    "dia": "2026-08-30",
+    "horas": 24,
+    "HsMax": 1.3,
+    "swellDominante": {
+     "H": 1.3,
+     "T": 5.9,
+     "dir": 312
+    },
+    "fracSwellMedio": 0.98,
+    "vientoMedioKmh": 7.7,
+    "horasOffshore": 0,
+    "horasOnshoreFuerte": 0,
+    "lluviaTotal": 1
+   },
+   {
+    "dia": "2026-08-31",
+    "horas": 24,
+    "HsMax": 1.66,
+    "swellDominante": {
+     "H": 1.66,
+     "T": 7.25,
+     "dir": 314
+    },
+    "fracSwellMedio": 1,
+    "vientoMedioKmh": 6.8,
+    "horasOffshore": 0,
+    "horasOnshoreFuerte": 0,
+    "lluviaTotal": 0
+   },
+   {
+    "dia": "2026-09-01",
+    "horas": 24,
+    "HsMax": 1.32,
+    "swellDominante": {
+     "H": 1.32,
+     "T": 7.45,
+     "dir": 313
+    },
+    "fracSwellMedio": 0.99,
+    "vientoMedioKmh": 8.6,
+    "horasOffshore": 0,
+    "horasOnshoreFuerte": 2,
+    "lluviaTotal": 0
+   },
+   {
+    "dia": "2026-09-02",
+    "horas": 24,
+    "HsMax": 0.88,
+    "swellDominante": {
+     "H": 0.84,
+     "T": 6.5,
+     "dir": 318
+    },
+    "fracSwellMedio": 0.93,
+    "vientoMedioKmh": 7.1,
+    "horasOffshore": 0,
+    "horasOnshoreFuerte": 0,
+    "lluviaTotal": 0
+   },
+   {
+    "dia": "2026-09-03",
+    "horas": 24,
+    "HsMax": 0.66,
+    "swellDominante": {
+     "H": 0.48,
+     "T": 5.2,
+     "dir": 323
+    },
+    "fracSwellMedio": 0.82,
+    "vientoMedioKmh": 7.1,
+    "horasOffshore": 0,
+    "horasOnshoreFuerte": 0,
+    "lluviaTotal": 0
+   },
+   {
+    "dia": "2026-09-04",
+    "horas": 24,
+    "HsMax": 0.52,
+    "swellDominante": {
+     "H": 0.48,
+     "T": 6.5,
+     "dir": 306
+    },
+    "fracSwellMedio": 0.87,
+    "vientoMedioKmh": 4.8,
+    "horasOffshore": 0,
+    "horasOnshoreFuerte": 0,
+    "lluviaTotal": 0
+   },
+   {
+    "dia": "2026-09-05",
+    "horas": 24,
+    "HsMax": 0.8,
+    "swellDominante": {
+     "H": 0.72,
+     "T": 8.4,
+     "dir": 316
+    },
+    "fracSwellMedio": 0.87,
+    "vientoMedioKmh": 6,
+    "horasOffshore": 0,
+    "horasOnshoreFuerte": 0,
+    "lluviaTotal": 0
+   }
+  ]
+ },
+ {
+  "spot": {
+   "nombre": "Suances (Los Locos)",
+   "lat": 43.462,
+   "lon": -4.048,
+   "orient": "N",
+   "ideal": [
+    0.9,
+    2
+   ]
+  },
+  "resumen": [
+   {
+    "dia": "2026-08-30",
+    "horas": 24,
+    "HsMax": 1.24,
+    "swellDominante": {
+     "H": 1.24,
+     "T": 5.95,
+     "dir": 317
+    },
+    "fracSwellMedio": 0.98,
+    "vientoMedioKmh": 15.5,
+    "horasOffshore": 0,
+    "horasOnshoreFuerte": 13,
+    "lluviaTotal": 3.8
+   },
+   {
+    "dia": "2026-08-31",
+    "horas": 24,
+    "HsMax": 1.52,
+    "swellDominante": {
+     "H": 1.52,
+     "T": 7.25,
+     "dir": 318
+    },
+    "fracSwellMedio": 1,
+    "vientoMedioKmh": 12,
+    "horasOffshore": 0,
+    "horasOnshoreFuerte": 0,
+    "lluviaTotal": 0
+   },
+   {
+    "dia": "2026-09-01",
+    "horas": 24,
+    "HsMax": 1.2,
+    "swellDominante": {
+     "H": 1.2,
+     "T": 7.25,
+     "dir": 318
+    },
+    "fracSwellMedio": 0.98,
+    "vientoMedioKmh": 13,
+    "horasOffshore": 0,
+    "horasOnshoreFuerte": 8,
+    "lluviaTotal": 0
+   },
+   {
+    "dia": "2026-09-02",
+    "horas": 24,
+    "HsMax": 0.8,
+    "swellDominante": {
+     "H": 0.8,
+     "T": 6.25,
+     "dir": 327
+    },
+    "fracSwellMedio": 0.95,
+    "vientoMedioKmh": 8.6,
+    "horasOffshore": 0,
+    "horasOnshoreFuerte": 4,
+    "lluviaTotal": 0
+   },
+   {
+    "dia": "2026-09-03",
+    "horas": 24,
+    "HsMax": 0.62,
+    "swellDominante": {
+     "H": 0.46,
+     "T": 5.2,
+     "dir": 328
+    },
+    "fracSwellMedio": 0.85,
+    "vientoMedioKmh": 8.7,
+    "horasOffshore": 0,
+    "horasOnshoreFuerte": 3,
+    "lluviaTotal": 0
+   },
+   {
+    "dia": "2026-09-04",
+    "horas": 24,
+    "HsMax": 0.48,
+    "swellDominante": {
+     "H": 0.42,
+     "T": 6.35,
+     "dir": 311
+    },
+    "fracSwellMedio": 0.87,
+    "vientoMedioKmh": 4.8,
+    "horasOffshore": 0,
+    "horasOnshoreFuerte": 0,
+    "lluviaTotal": 0
+   },
+   {
+    "dia": "2026-09-05",
+    "horas": 24,
+    "HsMax": 0.74,
+    "swellDominante": {
+     "H": 0.66,
+     "T": 8.3,
+     "dir": 319
+    },
+    "fracSwellMedio": 0.87,
+    "vientoMedioKmh": 7.5,
+    "horasOffshore": 0,
+    "horasOnshoreFuerte": 0,
+    "lluviaTotal": 0
+   }
+  ]
+ },
+ {
+  "spot": {
+   "nombre": "Liencres (El Madero)",
+   "lat": 43.464,
+   "lon": -3.95,
+   "orient": "N",
+   "ideal": [
+    0.8,
+    1.8
+   ]
+  },
+  "resumen": [
+   {
+    "dia": "2026-08-30",
+    "horas": 24,
+    "HsMax": 1.56,
+    "swellDominante": {
+     "H": 1.54,
+     "T": 6.15,
+     "dir": 310
+    },
+    "fracSwellMedio": 0.97,
+    "vientoMedioKmh": 14.5,
+    "horasOffshore": 0,
+    "horasOnshoreFuerte": 14,
+    "lluviaTotal": 2.9
+   },
+   {
+    "dia": "2026-08-31",
+    "horas": 24,
+    "HsMax": 1.94,
+    "swellDominante": {
+     "H": 1.94,
+     "T": 7.55,
+     "dir": 311
+    },
+    "fracSwellMedio": 1,
+    "vientoMedioKmh": 10.7,
+    "horasOffshore": 0,
+    "horasOnshoreFuerte": 0,
+    "lluviaTotal": 0
+   },
+   {
+    "dia": "2026-09-01",
+    "horas": 24,
+    "HsMax": 1.54,
+    "swellDominante": {
+     "H": 1.54,
+     "T": 7.65,
+     "dir": 311
+    },
+    "fracSwellMedio": 0.99,
+    "vientoMedioKmh": 12.3,
+    "horasOffshore": 0,
+    "horasOnshoreFuerte": 8,
+    "lluviaTotal": 0
+   },
+   {
+    "dia": "2026-09-02",
+    "horas": 24,
+    "HsMax": 1,
+    "swellDominante": {
+     "H": 0.98,
+     "T": 6.65,
+     "dir": 316
+    },
+    "fracSwellMedio": 0.95,
+    "vientoMedioKmh": 8.6,
+    "horasOffshore": 0,
+    "horasOnshoreFuerte": 4,
+    "lluviaTotal": 0
+   },
+   {
+    "dia": "2026-09-03",
+    "horas": 24,
+    "HsMax": 0.76,
+    "swellDominante": {
+     "H": 0.56,
+     "T": 5.3,
+     "dir": 323
+    },
+    "fracSwellMedio": 0.85,
+    "vientoMedioKmh": 8,
+    "horasOffshore": 0,
+    "horasOnshoreFuerte": 3,
+    "lluviaTotal": 0
+   },
+   {
+    "dia": "2026-09-04",
+    "horas": 24,
+    "HsMax": 0.58,
+    "swellDominante": {
+     "H": 0.58,
+     "T": 6.65,
+     "dir": 304
+    },
+    "fracSwellMedio": 0.9,
+    "vientoMedioKmh": 4.6,
+    "horasOffshore": 0,
+    "horasOnshoreFuerte": 0,
+    "lluviaTotal": 0
+   },
+   {
+    "dia": "2026-09-05",
+    "horas": 24,
+    "HsMax": 0.94,
+    "swellDominante": {
+     "H": 0.84,
+     "T": 7.7,
+     "dir": 311
+    },
+    "fracSwellMedio": 0.9,
+    "vientoMedioKmh": 6.8,
+    "horasOffshore": 0,
+    "horasOnshoreFuerte": 0,
+    "lluviaTotal": 0
+   }
+  ]
+ }
+]
