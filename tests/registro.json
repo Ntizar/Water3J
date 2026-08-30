@@ -1,28 +1,48 @@
 {
   "_descripcion": "Registro de auditoría de tests Water3J. Se actualiza en cada ejecución del runner.",
   "ultimo_run": "2026-08-30",
-  "commit": "ver git log (tests T01-T03 en verde)",
+  "commit": "ver git log (7/14 en verde)",
   "resumen": {
-    "pass": 3,
+    "pass": 7,
     "fail": 0,
-    "pending": 11,
+    "pending": 7,
     "omitted": 0
   },
   "tests": {
     "W3J-T01": {
       "estado": "PASS",
-      "medida": "error máx 0.0000% en 20 casos; profundo ±0.001%, somero auténtico (T=20s,h=2m) ±2% OK",
+      "medida": "error máx 0.0000% en 20 casos; regímenes OK",
       "criterio": "error < 0.5%"
     },
     "W3J-T02": {
       "estado": "PASS",
-      "medida": "RMS 0.0000%; H pico-valle err 0.000%; fase OK",
+      "medida": "RMS 0.0000%; Hpp 0.000%; fase OK",
       "criterio": "RMS < 0.5%; Hpp ±0.5%"
     },
     "W3J-T03": {
       "estado": "PASS",
-      "medida": "Hs 3.05 vs teo 3.06 m (err 0.47%); Tp 7.1 s (err 0.00%); JONSWAP 3.05 > PM 2.46 (coherente)",
+      "medida": "Hs 3.05 vs teo 3.06 m (0.47%); Tp 7.1 s (0.00%); JONSWAP>PM coherente",
       "criterio": "Hs ±5%, Tp ±3%"
+    },
+    "W3J-T04": {
+      "estado": "PASS",
+      "medida": "err Ks 0.000%; monotonía somero OK; Green 4→2m err 2.49%",
+      "criterio": "Ks <0.5%; Green <3%"
+    },
+    "W3J-T05": {
+      "estado": "PASS",
+      "medida": "err angular 0.000°; α decreciente; α final 13.22° < 15°",
+      "criterio": "err <1.5°; α < α0/2"
+    },
+    "W3J-T07": {
+      "estado": "PASS",
+      "medida": "y medio 0.019 m (eq. 0); oscilación 1.41 m estable",
+      "criterio": "eq ±10% radio; sin divergencia"
+    },
+    "W3J-T14": {
+      "estado": "PASS",
+      "medida": "50/50 casos sin NaN/excepciones",
+      "criterio": "0 NaN en 50/50"
     }
   }
 }

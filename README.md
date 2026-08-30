@@ -27,8 +27,8 @@ Crear una web app con Three.js que simule de forma científica y visualmente esp
 
 | | |
 |---|---|
-| **Tests** | 0/14 pasando (14 pendientes) — ver `tests/registro.json` |
-| **Fase actual** | 0 → 1: setup + océano base Gerstner |
+| **Tests** | **7/14 pasando** — ver `tests/registro.json` · ejecutar: `node tests/node-run.mjs` |
+| **Fase actual** | 1-2: física core validada (dispersión, Gerstner, JONSWAP, shoaling, refracción, flotabilidad, robustez) |
 | **Docs** | 9 documentos en `docs/` (teoría, referencias, arquitectura, tests) |
 
 ## Estructura

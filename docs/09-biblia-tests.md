@@ -66,15 +66,17 @@
 - **Categoría:** física · **Prioridad:** P0
 - **Requisito (GWT):** Dado olas propagando sobre una batimetría 1D que decrece linealmente, cuando la ola pasa de h=50 m a h=4 m con crestas paralelas a las isolíneas, entonces la altura crece según la teoría.
 - **Procedimiento:** activar el módulo de transformación (refracción/shoaling) sin difracción; medir H en 5 estaciones (h = 50, 25, 12.5, 8, 4 m); comparar con Ks = (c₀n₀/(2cn))^½ de la teoría (o H∝h^(-1/4) en somero con tolerancia del régimen intermedio).
-- **Criterio de paso:** error < 3% por estación en régimen intermedio/somero; monotonía estricta (H crece al reducir h). Fallo automático si H decrece en algún tramo.
+- **Criterio de paso:** error < 3% de Ks acumulado frente a la fórmula de conservación de flujo de energía (referencia independiente). Monotonía creciente SOLO en régimen somero (h ≤ 12.5 m en el caso de referencia): Ks tiene un mínimo físico real en aguas intermedias (kh≈1) y DEBE poder decrecer allí. Check Green's law en tramo somero auténtico (4→2 m): error < 3%.
 - **Evidencia:** tabla H medida vs H teórico por estación.
+- **Historial:** (2026-08-30) El criterio original exigía monotonía estricta desde aguas profundas — físicamente INCORRECTO: Ks decrece hasta su mínimo en kh≈1 y luego crece. Corregido: monotonía solo en somero. El check Green se movió de 8→4 m (régimen intermedio, Green no aplica) a 4→2 m (somero auténtico).
 
 ### W3J-T05 — Refracción (Snell)
 - **Categoría:** física · **Prioridad:** P0
 - **Requisito (GWT):** Dado un tren de olas incidente a 30° sobre una batimetría con isolíneas paralelas, cuando propaga hacia somero, entonces el ángulo local sigue sin α/c = constante.
 - **Procedimiento:** trazar 20 rayos con el trazador del programa sobre batimetría plana inclinada; medir ángulo α(h) en cada estación; comparar con Snell analítico.
-- **Criterio de paso:** error angular < 1.5° por estación; al llegar a somero α → 0 (±2°) (olas alineadas con la costa).
+- **Criterio de paso:** error angular < 1.5° por estación frente a Snell con c de referencia independiente; α decrece monótonamente al disminuir h; α(h=5 m) < α₀/2 (convergencia sustancial). NOTA: α→0 solo ocurre en h extremadamente somera (c≈sinα/c₀ → h de centímetros), no en el tramo simulado.
 - **Evidencia:** ángulos medidos vs teóricos.
+- **Historial:** (2026-08-30) El criterio original "α → 0 (±2°) al llegar a somero" era físicamente inalcanzable en batimetría hasta h=1 m: Snell exige c≈0.86 m/s (h≈7 cm) para α=2° con α₀=30°. Corregido a convergencia sustancial (α < α₀/2). El trazador ya cumplía Snell con error 0.000°.
 
 ### W3J-T06 — Reflexión y clapotis en muro vertical
 - **Categoría:** física · **Prioridad:** P0
