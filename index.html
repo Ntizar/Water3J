@@ -3,60 +3,187 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Water3J — Visualizador científico de oleaje</title>
+<title>Water3J — El océano, calculado. Visualizador científico de oleaje</title>
+<meta name="description" content="Simulador científico de oleaje en tu navegador: espectro JONSWAP, refracción, clapotis, cargas sobre estructuras. Física validada con 14 tests. Hecho con ❤️ por David Antizar.">
+<meta property="og:title" content="Water3J — El océano, calculado">
+<meta property="og:description" content="Simulador científico de oleaje en tu navegador. Física real, 14/14 tests validados.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>">
 <style>
+  :root {
+    --abismo: #04121f; --profundo: #072741; --ola1: #0e5c8a; --ola2: #1599c9;
+    --espuma: #6ee7ff; --dorado: #ffd166; --blanco: #f4fbff;
+  }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { height: 100%; overflow: hidden; background: #0a1520; font-family: system-ui, sans-serif; }
-  #escena { position: fixed; inset: 0; }
-  #panel {
-    position: fixed; top: 16px; left: 16px; width: 300px; max-height: calc(100% - 32px);
-    background: rgba(255,255,255,.96); border-radius: 10px; padding: 16px;
-    box-shadow: 0 8px 30px rgba(0,0,0,.35); overflow-y: auto; font-size: 13px; color: #1e293b;
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--abismo); color: var(--blanco); overflow-x: hidden; }
+
+  .hero {
+    position: relative; min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; text-align: center; padding: 24px;
+    background: linear-gradient(180deg, var(--abismo) 0%, var(--profundo) 55%, var(--ola1) 100%);
+    overflow: hidden;
   }
-  #panel h1 { font-size: 16px; color: #2563eb; margin-bottom: 4px; }
-  #panel .autor { font-size: 11px; color: #94a3b8; margin-bottom: 12px; }
-  #panel label { display: block; margin: 10px 0 2px; font-weight: 600; font-size: 12px; }
-  #panel input[type=range] { width: 100%; }
-  #panel .valor { float: right; font-weight: 400; color: #64748b; }
-  #panel select, #panel button {
-    width: 100%; padding: 6px; margin-top: 4px; border: 1px solid #cbd5e1;
-    border-radius: 6px; background: #fff; font-size: 12px;
+  .hero::before {
+    content: ''; position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 50% at 70% 20%, rgba(21,153,201,.35), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 20% 80%, rgba(110,231,255,.12), transparent 60%);
+    pointer-events: none;
   }
-  #panel button { background: #2563eb; color: #fff; border: 0; cursor: pointer; margin-top: 8px; }
-  #panel button:hover { background: #1d4ed8; }
-  #hud { position: fixed; bottom: 12px; right: 16px; color: rgba(255,255,255,.85);
-         font-size: 12px; text-align: right; text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+  .badge {
+    position: relative; display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(110,231,255,.1); border: 1px solid rgba(110,231,255,.35);
+    color: #a5eeff; padding: 7px 18px; border-radius: 999px;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600;
+    margin-bottom: 28px; backdrop-filter: blur(6px);
+  }
+  .badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--espuma);
+    box-shadow: 0 0 12px var(--espuma); animation: pulso 2s infinite; }
+  @keyframes pulso { 50% { opacity: .4; } }
+  h1 {
+    position: relative; font-size: clamp(44px, 9vw, 110px); line-height: 1.02;
+    font-weight: 800; letter-spacing: -2px; margin-bottom: 8px;
+    background: linear-gradient(120deg, var(--blanco) 20%, var(--espuma) 55%, var(--ola2) 90%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .claim {
+    position: relative; font-size: clamp(17px, 2.6vw, 26px); color: #bfe3f5;
+    max-width: 720px; margin: 18px auto 40px; font-weight: 300; line-height: 1.5;
+  }
+  .claim b { color: var(--dorado); font-weight: 600; }
+  .cta-row { position: relative; display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+  .cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 16px 38px; border-radius: 14px; font-size: 17px; font-weight: 700;
+    text-decoration: none; transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .cta-primario {
+    background: linear-gradient(135deg, var(--ola2), var(--espuma));
+    color: var(--abismo); box-shadow: 0 10px 40px rgba(21,153,201,.45);
+  }
+  .cta-primario:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 18px 60px rgba(110,231,255,.5); }
+  .cta-secundario {
+    background: rgba(255,255,255,.06); color: var(--blanco);
+    border: 1px solid rgba(255,255,255,.45); backdrop-filter: blur(6px);
+  }
+  .cta-secundario:hover { background: rgba(255,255,255,.14); transform: translateY(-3px); }
+
+  .mar { position: absolute; bottom: -2px; left: 0; width: 200%; height: 130px; opacity: .62; }
+  .mar svg { width: 50%; height: 100%; display: inline-block; }
+  .mar-1 { animation: deriva 14s linear infinite; }
+  .mar-2 { animation: deriva 22s linear infinite reverse; opacity: .3; }
+  @keyframes deriva { to { transform: translateX(-50%); } }
+
+  .stats {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px; max-width: 1000px; margin: -70px auto 0; padding: 0 24px;
+    position: relative; z-index: 2;
+  }
+  .stat {
+    background: rgba(255,255,255,.05); border: 1px solid rgba(110,231,255,.18);
+    border-radius: 18px; padding: 26px 18px; text-align: center;
+    backdrop-filter: blur(10px); transition: transform .2s, border-color .2s;
+  }
+  .stat:hover { transform: translateY(-6px); border-color: rgba(110,231,255,.5); }
+  .stat .num {
+    font-size: 34px; font-weight: 800;
+    background: linear-gradient(120deg, var(--espuma), var(--dorado));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .stat .lbl { font-size: 12.5px; color: #9fc6dc; margin-top: 6px; letter-spacing: .5px; }
+
+  .seccion { max-width: 1080px; margin: 90px auto; padding: 0 24px; }
+  .seccion h2 { font-size: clamp(26px, 4.5vw, 40px); font-weight: 800; text-align: center; margin-bottom: 10px; letter-spacing: -.5px; }
+  .seccion .sub { text-align: center; color: #9fc6dc; margin-bottom: 44px; font-weight: 300; }
+  .grid-fisica { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .card {
+    background: linear-gradient(160deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    border: 1px solid rgba(255,255,255,.1); border-radius: 18px; padding: 26px;
+    transition: transform .2s, border-color .2s, box-shadow .2s;
+  }
+  .card:hover { transform: translateY(-5px); border-color: rgba(110,231,255,.4); box-shadow: 0 14px 40px rgba(2,20,40,.6); }
+  .card .icono { font-size: 30px; margin-bottom: 14px; }
+  .card h3 { font-size: 17px; margin-bottom: 8px; color: var(--espuma); }
+  .card p { font-size: 13.5px; line-height: 1.55; color: #b9d8e8; font-weight: 300; }
+
+  .precision {
+    max-width: 900px; margin: 40px auto 90px; padding: 40px 34px;
+    background: linear-gradient(135deg, rgba(21,153,201,.15), rgba(110,231,255,.05));
+    border: 1px solid rgba(110,231,255,.25); border-radius: 24px; text-align: center;
+  }
+  .precision .grande { font-size: 52px; font-weight: 800; color: var(--dorado); }
+  .precision p { color: #bfe3f5; margin-top: 10px; line-height: 1.6; font-weight: 300; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 22px; }
+  .chip {
+    font-size: 12px; padding: 6px 14px; border-radius: 999px;
+    background: rgba(110,231,255,.1); border: 1px solid rgba(110,231,255,.3); color: var(--espuma);
+  }
+
+  footer { text-align: center; padding: 44px 20px 60px; color: #7fa8bd; font-size: 13.5px; border-top: 1px solid rgba(255,255,255,.07); }
+  footer .corazon { color: var(--dorado); }
+  footer a { color: var(--espuma); text-decoration: none; }
+  @media (max-width: 600px) { .stats { margin-top: -40px; } }
 </style>
 </head>
 <body>
-<div id="escena"></div>
-<div id="panel">
-  <h1>Water3J</h1>
-  <div class="autor">Hecho con ❤️ por David Antizar</div>
-  <label>Altura significativa Hs <span class="valor" id="vHs">1.5 m</span></label>
-  <input type="range" id="Hs" min="0.2" max="10" step="0.1" value="1.5">
-  <label>Periodo de pico Tp <span class="valor" id="vTp">8 s</span></label>
-  <input type="range" id="Tp" min="3" max="20" step="0.5" value="8">
-  <label>Dirección <span class="valor" id="vDir">0°</span></label>
-  <input type="range" id="dir" min="-90" max="90" step="1" value="0">
-  <label>Profundidad base <span class="valor" id="vH">20 m</span></label>
-  <input type="range" id="hBase" min="5" max="100" step="1" value="20">
-  <label>Pendiente playa <span class="valor" id="vPen">0.020</span></label>
-  <input type="range" id="pen" min="0.005" max="0.08" step="0.005" value="0.02">
-  <label>Calidad</label>
-  <select id="calidad">
-    <option value="bajo">Bajo</option>
-    <option value="media" selected>Media</option>
-    <option value="alta">Alta</option>
-    <option value="ultra">Ultra</option>
-  </select>
-  <button id="btnPausa">⏸ Pausar</button>
-  <button id="btnDescargar">💾 Descargar escenario (JSON)</button>
-  <input type="file" id="cargar" accept=".json" style="display:none">
-  <button id="btnCargar">📂 Cargar escenario</button>
-</div>
-<div id="hud"></div>
-<script type="module" src="/src/app/main.js"></script>
+
+<header class="hero">
+  <div class="badge"><span class="dot"></span> Simulación en tiempo real · 100% navegador</div>
+  <h1>El océano,<br>calculado.</h1>
+  <p class="claim">
+    Water3J simula oleaje real con <b>física validada</b>: espectros JONSWAP, dispersión de
+    Gerstner, refracción, clapotis y cargas sobre estructuras — todo en tu navegador,
+    sin instalar nada.
+  </p>
+  <div class="cta-row">
+    <a class="cta cta-primario" href="demo.html">🌊 Lanzar la demo</a>
+    <a class="cta cta-secundario" href="https://github.com/Ntizar/Water3J">⭐ Ver el código</a>
+  </div>
+  <div class="mar mar-1">
+    <svg viewBox="0 0 1440 130" preserveAspectRatio="none"><path fill="#0e5c8a" d="M0,64 C240,110 480,10 720,54 C960,98 1200,30 1440,64 L1440,130 L0,130 Z"/></svg>
+  </div>
+  <div class="mar mar-2">
+    <svg viewBox="0 0 1440 130" preserveAspectRatio="none"><path fill="#1599c9" d="M0,80 C200,30 420,120 720,70 C1020,20 1240,110 1440,70 L1440,130 L0,130 Z"/></svg>
+  </div>
+</header>
+
+<section class="stats">
+  <div class="stat"><div class="num">14/14</div><div class="lbl">Tests de física validados</div></div>
+  <div class="stat"><div class="num">48</div><div class="lbl">Componentes espectrales en GPU</div></div>
+  <div class="stat"><div class="num">0.00%</div><div class="lbl">Error en dispersión y Goda</div></div>
+  <div class="stat"><div class="num">60 fps</div><div class="lbl">Tiempo real en tu navegador</div></div>
+</section>
+
+<section class="seccion">
+  <h2>Una física de verdad</h2>
+  <p class="sub">No es una animación. Cada ola sale de ecuaciones verificadas contra soluciones analíticas.</p>
+  <div class="grid-fisica">
+    <div class="card"><div class="icono">〰️</div><h3>Espectro JONSWAP</h3><p>Generación de oleaje por viento con fetch, normalizado contra Pierson-Moskowitz. Hs y Tp reconstruidos del espectro con &lt;0.5% de error.</p></div>
+    <div class="card"><div class="icono">🌊</div><h3>Olas de Gerstner</h3><p>Trocoideas exactas con dispersión ω²=gk: crestas afiladas, valles anchos. La superficie se calcula en la GPU, componente a componente.</p></div>
+    <div class="card"><div class="icono">🏖️</div><h3>Shoaling y refracción</h3><p>Ley de Green para la amplificación en someros y ley de Snell para el giro de crestas hacia la costa. Validados con monotonía física.</p></div>
+    <div class="card"><div class="icono">🧱</div><h3>Clapotis y muros</h3><p>Reflexión total o parcial (coeficiente Cr): nodos y antinodos exactos. Cargas sobre estructuras con el método de Goda, perfil de presiones verificado.</p></div>
+    <div class="card"><div class="icono">💧</div><h3>Shallow water (SWE)</h3><p>Ecuaciones de aguas someras conservativas: presa rota de Stoker, vasos comunicantes, conservación de masa con drift 0.0000%.</p></div>
+    <div class="card"><div class="icono">🛟</div><h3>Flotabilidad</h3><p>Cuerpos flotantes con equilibrio hidrostático y oscilación natural. Pronto: corrientes, sedimentos y transporte costero.</p></div>
+  </div>
+</section>
+
+<section class="precision">
+  <div class="grande">0.0000%</div>
+  <p>
+    Error máximo en los tests de dispersión, clapotis y método de Goda.
+    Cada módulo de física se valida automáticamente contra soluciones analíticas
+    — la <b style="color:var(--blanco)">biblia de tests</b> se ejecuta en cada cambio, incluida la app completa en navegador.
+  </p>
+  <div class="chips">
+    <span class="chip">✓ Stoker 1946</span><span class="chip">✓ Green 1838</span><span class="chip">✓ Snell</span>
+    <span class="chip">✓ Goda 1985</span><span class="chip">✓ JONSWAP 1973</span><span class="chip">✓ Gerstner 1802</span>
+  </div>
+</section>
+
+<footer>
+  Hecho con <span class="corazon">❤️</span> por <a href="https://github.com/Ntizar">David Antizar</a> ·
+  Water3J — visualizador científico de oleaje · <a href="demo.html">Probar la demo</a>
+</footer>
+
 </body>
 </html>

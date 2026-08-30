@@ -1,7 +1,7 @@
 // runner-navegador.mjs — T10/T12/T13 contra la app real vía puppeteer (headless, SwiftShader)
 import puppeteer from 'puppeteer';
 
-const URL = 'http://localhost:5199/';
+const URL = 'http://localhost:5199/demo.html';
 const resultados = [];
 function registrar(id, nombre, pasa, medida, criterio) {
   resultados.push({ id, nombre, estado: pasa ? 'PASS' : 'FAIL', medida, criterio });
