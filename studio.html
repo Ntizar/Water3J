@@ -57,7 +57,10 @@
       <label>Hs en el punto que marcarás (m)</label><input id="inHs" type="number" step="0.1" value="2" min="0.1" max="15">
       <label>Periodo T (s)</label><input id="inT" type="number" step="0.5" value="10" min="3" max="25">
       <label>Dirección α₀ (° respecto al transecto)</label><input id="inAlfa" type="number" step="1" value="15" min="0" max="80">
-      <h2>2 · Estructura</h2>
+      <h2>2 · Propagación 2D real (batimetría EMODnet)</h2>
+      <button class="sec" id="btn2D">🌍 Simular frentes 2D aquí</button>
+      <div id="estado2d" class="ayuda" style="display:none"></div>
+      <h2>3 · Estructura</h2>
       <select id="inEstructura">
         <option value="">Sin estructura</option>
         <option value="muro">Muro vertical (Goda + clapotis)</option>

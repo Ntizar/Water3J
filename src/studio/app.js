@@ -201,3 +201,15 @@ $('btnGuardar').onclick = async () => {
   $(id).oninput = calcular; $(id).onchange = calcular;
 });
 calcular(); refrescarLista();
+
+// ================= CAPA 2D: batimetría real + frentes =================
+import { init2D, simular2D, limpiar2D } from './capa2d.js';
+init2D(mapa);
+$('estado2d').style.display = 'block';
+$('btn2D').onclick = async () => {
+  const centro = mapa.getCenter();
+  try {
+    await simular2D(mapa, { lat: centro.lat, lon: centro.lng,
+      Hs0: +$('inHs').value, T: +$('inT').value, alfa0: +$('inAlfa').value });
+  } catch (e) { $('estado2d').textContent = 'Error: ' + e.message; }
+};
