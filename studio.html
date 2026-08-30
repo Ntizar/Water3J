@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Water3J Studio — Estudios de oleaje</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><circle cx='8' cy='8' r='7' fill='%232563eb'/></svg>">
+<style>
+  :root { --bg: #f7f9fb; --panel: #ffffff; --tinta: #16212b; --gris: #5b6b7a;
+          --azul: #2563eb; --linea: #e3e9ef; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font: 15px/1.5 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--tinta); }
+  header { background: var(--panel); border-bottom: 1px solid var(--linea); padding: 14px 28px;
+           display: flex; align-items: baseline; gap: 14px; }
+  header h1 { font-size: 19px; letter-spacing: .3px; }
+  header .sub { color: var(--gris); font-size: 13px; }
+  header .atrib { margin-left: auto; color: var(--gris); font-size: 12px; }
+  main { display: grid; grid-template-columns: 330px 1fr; gap: 18px; padding: 18px 28px; max-width: 1400px; margin: 0 auto; }
+  .panel { background: var(--panel); border: 1px solid var(--linea); border-radius: 12px; padding: 18px; }
+  .panel h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .8px; color: var(--gris); margin-bottom: 12px; }
+  label { display: block; font-size: 13px; color: var(--gris); margin: 10px 0 4px; }
+  input, select { width: 100%; padding: 8px 10px; border: 1px solid var(--linea); border-radius: 8px; font: inherit; background: #fff; }
+  button.principal { width: 100%; margin-top: 16px; padding: 11px; background: var(--azul); color: #fff;
+                     border: 0; border-radius: 9px; font: inherit; font-weight: 600; cursor: pointer; }
+  button.principal:hover { filter: brightness(1.08); }
+  button.sec { width: 100%; margin-top: 8px; padding: 9px; background: #fff; color: var(--azul);
+               border: 1px solid var(--azul); border-radius: 9px; font: inherit; cursor: pointer; }
+  .escenario { display: flex; justify-content: space-between; align-items: center; padding: 8px 4px;
+               border-bottom: 1px solid var(--linea); font-size: 14px; }
+  .escenario b { cursor: pointer; color: var(--azul); font-weight: 600; }
+  .escenario span.borrar { color: #c33; cursor: pointer; padding: 0 6px; }
+  #grafica { width: 100%; height: 300px; }
+  .resumen { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 16px; }
+  .metrica { background: #f0f5fa; border-radius: 10px; padding: 12px; }
+  .metrica .v { font-size: 22px; font-weight: 700; color: var(--azul); }
+  .metrica .k { font-size: 12px; color: var(--gris); }
+  details { margin-top: 16px; border: 1px solid var(--linea); border-radius: 10px; }
+  summary { cursor: pointer; padding: 12px 16px; font-weight: 600; font-size: 14px; }
+  .paso { padding: 10px 16px; border-top: 1px solid var(--linea); font-size: 14px; }
+  .paso code { background: #f0f5fa; padding: 2px 7px; border-radius: 6px; font-size: 13px; }
+  .paso .aval { color: var(--gris); font-size: 12.5px; margin-top: 3px; }
+  .calc { background: #eef6ee; border-radius: 8px; padding: 10px 14px; margin: 10px 16px 14px; font-size: 13.5px; font-family: Consolas, monospace; }
+  footer { text-align: center; color: var(--gris); font-size: 12px; padding: 20px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Water3J Studio</h1><span class="sub">Estudios de oleaje en transecto costero</span>
+  <span class="atrib">Hecho con ❤️ por David Antizar</span>
+</header>
+<main>
+  <aside class="panel">
+    <h2>Oleaje en el borde (mar profundo)</h2>
+    <label>Hs (m)</label><input id="inHs" type="number" step="0.1" value="2.0" min="0.1" max="15">
+    <label>Periodo T (s)</label><input id="inT" type="number" step="0.5" value="10" min="3" max="25">
+    <label>Dirección α₀ (° respecto a la normal)</label><input id="inAlfa" type="number" step="1" value="20" min="0" max="80">
+    <h2 style="margin-top:20px">Estructura</h2>
+    <label>Tipo</label>
+    <select id="inEstructura"><option value="">Sin estructura</option>
+      <option value="muro">Muro vertical (Goda + clapotis)</option>
+      <option value="dique">Dique (próx.: energía disipada)</option>
+      <option value="espigon">Espigón (próx.)</option></select>
+    <label>Posición x (m)</label><input id="inXEst" type="number" value="300" min="10" max="900">
+    <h2 style="margin-top:20px">Perfil batimétrico</h2>
+    <label>Preset</label>
+    <select id="inPerfil">
+      <option value="playa">Playa suave (20→1 m en 500 m)</option>
+      <option value="fuerte">Playa con pendiente fuerte (20→1 m en 200 m)</option>
+      <option value="plataforma">Plataforma + talud (15→12→3 m)</option>
+    </select>
+    <button class="principal" id="btnCalcular">Calcular estudio</button>
+    <button class="sec" id="btnGuardar">💾 Guardar escenario</button>
+    <h2 style="margin-top:20px">Escenarios guardados (local)</h2>
+    <div id="listaEsc"></div>
+  </aside>
+  <section>
+    <div class="panel">
+      <h2>Transecto — altura de ola significativa Hs(x)</h2>
+      <canvas id="grafica"></canvas>
+      <div class="resumen" id="resumen"></div>
+    </div>
+    <details class="panel" style="margin-top:16px">
+      <summary>🔍 ¿Qué está calculando? — fórmulas y validación (ábrela y valida)</summary>
+      <div id="pasos"></div>
+      <div class="calc" id="calculo"></div>
+    </details>
+  </section>
+</main>
+<footer>Water3J Studio · física validada con 17 tests (biblia) · datos de entrada reales opcionales (Puertos del Estado) · todo local, nada sale de tu navegador</footer>
+<script type="module" src="/src/studio/app.js"></script>
+</body>
+</html>
