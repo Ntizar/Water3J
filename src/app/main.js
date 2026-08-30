@@ -289,7 +289,13 @@ let fpsMarcas = [], frames = 0, tHud = 0, tArranque = 0, adaptado = false;
 // adaptación automática: en móviles modestos / render por software el coste de 48 olas × 37k
 // vértices es brutal. Detección en el ARRANQUE (antes del primer render): si el renderer es
 // software (SwiftShader/llvmpipe) arrancamos en calidad 'bajo' — evita el swap en caliente.
-const esSoftware = /swiftshader|llvmpipe|software/i.test(renderer.getContext().getParameter(renderer.getContext().RENDERER) + '');
+const _gl = renderer.getContext();
+let _gpuName = _gl.getParameter(_gl.RENDERER) + '';
+try {
+  const ext = _gl.getExtension('WEBGL_debug_renderer_info');
+  if (ext) _gpuName += ' ' + _gl.getParameter(ext.UNMASKED_RENDERER_WEBGL);
+} catch (e) { /* sin debug info */ }
+const esSoftware = /swiftshader|llvmpipe|software|angle \(google/i.test(_gpuName) || _gpuName.includes('WebKit');
 if (esSoftware) { estado.visual.calidad = 'bajo'; geoAgua.dispose();
   const n = new THREE.PlaneGeometry(TAM, TAM, SEG.bajo, SEG.bajo); n.rotateX(-Math.PI / 2);
   agua.geometry = n;
