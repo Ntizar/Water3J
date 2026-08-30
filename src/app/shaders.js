@@ -14,6 +14,7 @@ export const COMMON = `
 
 export const VERTEX_AGUA = /* glsl */`
   uniform float uTiempo;
+  uniform float uChop;
   uniform vec4 uOlas[MAX_OLAS];
   uniform int uNumOlas;
   varying vec3 vNormal;
@@ -34,13 +35,11 @@ export const VERTEX_AGUA = /* glsl */`
       float k = 6.28318 / L;
       float c = sqrt(9.81 / k);
       float f = k * (dot(w.xy, xz) - c * uTiempo);
-      float a = w.z; // amplitud
+      float a = w.z * uChop / k; // chop amplifica el steepness VISUAL (la física CPU queda intacta)
       eta += a * sin(f);
-      // derivadas para normal
-      float dfdx = k * w.x;
-      float dfdz = k * w.y;
-      dhx += a * cos(f) * dfdx;
-      dhz += a * cos(f) * dfdz;
+      // derivadas para normal (a·k = w.z·uChop)
+      dhx += w.z * uChop * w.x * cos(f);
+      dhz += w.z * uChop * w.y * cos(f);
     }
     vec3 desplazada = vec3(p.x, p.y + eta, p.z);
     vNormal = normalize(vec3(-dhx, 1.0, -dhz));
@@ -71,10 +70,13 @@ export const FRAGMENT_AGUA = /* glsl */`
     // especular solar
     vec3 H = normalize(uSol + V);
     float spec = pow(max(dot(N, H), 0.0), 120.0) * 0.9;
-    // espuma en crestas
-    float espuma = smoothstep(uUmbralEspuma, uUmbralEspuma + 0.25, vEta);
-    vec3 col = mix(base, uColorEspuma, espuma * 0.8);
-    col = mix(col, vec3(0.75, 0.85, 0.95), fresnel * 0.6); // cielo reflejado fake
+    // espuma en crestas: por altura Y por pendiente (whitecaps)
+    float pendiente = 1.0 - N.y;
+    float espuma = smoothstep(uUmbralEspuma, uUmbralEspuma + 0.25, vEta)
+                 + smoothstep(0.16, 0.34, pendiente);
+    espuma = clamp(espuma, 0.0, 1.0);
+    vec3 col = mix(base, uColorEspuma, espuma * 0.85);
+    col = mix(col, vec3(0.75, 0.85, 0.95), fresnel * 0.35); // cielo reflejado (limitado: el relieve debe verse)
     col += vec3(1.0, 0.95, 0.85) * spec;
     gl_FragColor = vec4(col, 1.0);
   }
