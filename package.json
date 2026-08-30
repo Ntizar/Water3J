@@ -1,0 +1,23 @@
+{
+  "name": "water3j",
+  "version": "0.1.0",
+  "description": "Visualizador científico de oleaje y dinámica costera con Three.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "node tests/node-run.mjs && node tests/tanda3.mjs && node tests/tanda4.mjs && node tests/runner-navegador.mjs"
+  },
+  "dependencies": {
+    "puppeteer": "^25.9.0",
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  },
+  "allowScripts": {
+    "esbuild@0.21.5": true,
+    "puppeteer@25.9.0": true
+  }
+}

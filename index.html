@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Water3J — Visualizador científico de oleaje</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌊</text></svg>">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; overflow: hidden; background: #0a1520; font-family: system-ui, sans-serif; }
+  #escena { position: fixed; inset: 0; }
+  #panel {
+    position: fixed; top: 16px; left: 16px; width: 300px; max-height: calc(100% - 32px);
+    background: rgba(255,255,255,.96); border-radius: 10px; padding: 16px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.35); overflow-y: auto; font-size: 13px; color: #1e293b;
+  }
+  #panel h1 { font-size: 16px; color: #2563eb; margin-bottom: 4px; }
+  #panel .autor { font-size: 11px; color: #94a3b8; margin-bottom: 12px; }
+  #panel label { display: block; margin: 10px 0 2px; font-weight: 600; font-size: 12px; }
+  #panel input[type=range] { width: 100%; }
+  #panel .valor { float: right; font-weight: 400; color: #64748b; }
+  #panel select, #panel button {
+    width: 100%; padding: 6px; margin-top: 4px; border: 1px solid #cbd5e1;
+    border-radius: 6px; background: #fff; font-size: 12px;
+  }
+  #panel button { background: #2563eb; color: #fff; border: 0; cursor: pointer; margin-top: 8px; }
+  #panel button:hover { background: #1d4ed8; }
+  #hud { position: fixed; bottom: 12px; right: 16px; color: rgba(255,255,255,.85);
+         font-size: 12px; text-align: right; text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+</style>
+</head>
+<body>
+<div id="escena"></div>
+<div id="panel">
+  <h1>Water3J</h1>
+  <div class="autor">Hecho con ❤️ por David Antizar</div>
+  <label>Altura significativa Hs <span class="valor" id="vHs">1.5 m</span></label>
+  <input type="range" id="Hs" min="0.2" max="10" step="0.1" value="1.5">
+  <label>Periodo de pico Tp <span class="valor" id="vTp">8 s</span></label>
+  <input type="range" id="Tp" min="3" max="20" step="0.5" value="8">
+  <label>Dirección <span class="valor" id="vDir">0°</span></label>
+  <input type="range" id="dir" min="-90" max="90" step="1" value="0">
+  <label>Profundidad base <span class="valor" id="vH">20 m</span></label>
+  <input type="range" id="hBase" min="5" max="100" step="1" value="20">
+  <label>Pendiente playa <span class="valor" id="vPen">0.020</span></label>
+  <input type="range" id="pen" min="0.005" max="0.08" step="0.005" value="0.02">
+  <label>Calidad</label>
+  <select id="calidad">
+    <option value="bajo">Bajo</option>
+    <option value="media" selected>Media</option>
+    <option value="alta">Alta</option>
+    <option value="ultra">Ultra</option>
+  </select>
+  <button id="btnPausa">⏸ Pausar</button>
+  <button id="btnDescargar">💾 Descargar escenario (JSON)</button>
+  <input type="file" id="cargar" accept=".json" style="display:none">
+  <button id="btnCargar">📂 Cargar escenario</button>
+</div>
+<div id="hud"></div>
+<script type="module" src="/src/app/main.js"></script>
+</body>
+</html>

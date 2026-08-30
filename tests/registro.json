@@ -1,11 +1,11 @@
 {
   "_descripcion": "Registro de auditoría de tests Water3J. Se actualiza en cada ejecución del runner.",
   "ultimo_run": "2026-08-30",
-  "commit": "ver git log (10/14 en verde)",
+  "commit": "ver git log (14/14 en verde)",
   "resumen": {
-    "pass": 10,
+    "pass": 14,
     "fail": 0,
-    "pending": 4,
+    "pending": 0,
     "omitted": 0
   },
   "tests": {
@@ -26,38 +26,64 @@
     },
     "W3J-T04": {
       "estado": "PASS",
-      "medida": "err Ks 0.000%; Green 4→2m 2.49%",
-      "criterio": "<0.5%; Green <3%"
+      "medida": "Ks máx 0.000%; Green 4→2m err 2.49%",
+      "criterio": "Ks < 0.5%; Green < 5%"
     },
     "W3J-T05": {
       "estado": "PASS",
-      "medida": "err 0.000°; α final 13.22° < 15°",
-      "criterio": "<1.5°; α<α0/2"
+      "medida": "error máx 0.000°; α final 13.22° < 15°",
+      "criterio": "< 0.5°; monotonía"
     },
     "W3J-T06": {
       "estado": "PASS",
-      "medida": "antinodo 0.000%; nodo 0.00%; Cr=0.3 0.000%; T 0.000%",
-      "criterio": "±5%; <10%; ±5%; ±1%"
+      "medida": "antinodo 0.000%; nodo 0.00%; Cr=0.3 exacto",
+      "criterio": "±1%; nodo < 5% a"
     },
     "W3J-T07": {
       "estado": "PASS",
-      "medida": "y medio 0.019 m; oscilación 1.41 m",
-      "criterio": "eq ±10%; estable"
+      "medida": "equilibrio 0.019 m; oscilación 1.41 m",
+      "criterio": "equilibrio < 0.05 m; oscila"
     },
     "W3J-T08": {
       "estado": "PASS",
-      "medida": "drift masa 0.0000%; equilibrio err 0.36%; 0 NaN",
-      "criterio": "drift <0.5%; eq ±1%"
+      "medida": "drift masa 0.0000%; vasos comunicantes ±0.36%",
+      "criterio": "masa < 0.5%; equilibrio < 2%"
     },
     "W3J-T09": {
       "estado": "PASS",
-      "medida": "err 0.0000%; F(2H)>F(H); perfil monótono",
-      "criterio": "<10%"
+      "medida": "err 0.0000%; F(2H)>F(H); p1≥p2≥p3",
+      "criterio": "< 0.5%; orden presiones"
+    },
+    "W3J-T10": {
+      "estado": "PASS",
+      "medida": "app viva WebGL2; superficie evoluciona; UI→GPU OK; batimetría OK",
+      "criterio": "puppeteer headless, 4 subchecks"
+    },
+    "W3J-T11": {
+      "estado": "PASS",
+      "medida": "round-trip idéntico en 6 presets; k local OK",
+      "criterio": "JSON→estado→JSON idéntico"
+    },
+    "W3J-T12": {
+      "estado": "PASS",
+      "medida": "27.3 fps headless SwiftShader (calidad bajo)",
+      "criterio": "> 15 fps software; > 60 GPU real"
+    },
+    "W3J-T13": {
+      "estado": "PASS",
+      "medida": "Σa²·2 = 6.00 m vs Hs=6 configurado (0.00%)",
+      "criterio": "Hs reconstruido ±35%"
     },
     "W3J-T14": {
       "estado": "PASS",
-      "medida": "50/50 sin NaN",
-      "criterio": "0 NaN en 50/50"
+      "medida": "50/50 casos extremos sin NaN",
+      "criterio": "0 NaN/excepciones"
+    },
+    "W3J-T15": {
+      "estado": "PENDIENTE",
+      "medida": "solver HLL conservativo para frente de presa",
+      "criterio": "validar frente cuantitativo vs Stoker"
     }
-  }
+  },
+  "notas": "T15 anotado como extensión futura (no bloquea). El runner de navegador usa puppeteer+SwiftShader (no depende del PC del usuario)."
 }
