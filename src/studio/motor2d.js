@@ -53,8 +53,9 @@ export function trazarRayo2D(rejilla, x0, y0, alfa0, T, opts = {}) {
     const h0 = hEn(rejilla, x, y);
     if (h0 <= 0.2) break; // orilla
     const c = velocidadFase(T, h0);
-    // ∂c/∂n por diferencias finitas en dirección perpendicular
-    const nx = -Math.sin(alfa), ny = Math.cos(alfa);
+    // ∂c/∂n por diferencias finitas en dirección perpendicular al rayo
+    // t̂ = (sin α, cos α) → n̂ = (cos α, -sin α)
+    const nx = Math.cos(alfa), ny = -Math.sin(alfa);
     const eps = 1.0;
     const cAdelante = velocidadFase(T, Math.max(0.25, hEn(rejilla, x + nx*eps, y + ny*eps)));
     const cAtras    = velocidadFase(T, Math.max(0.25, hEn(rejilla, x - nx*eps, y - ny*eps)));
@@ -101,8 +102,24 @@ export function propagarFrente(rejilla, frente, T, pasos = 60) {
   return trayectorias; // una polilínea por punto del frente
 }
 
-// reconstruye frentes equiespaciados en el tiempo (isócronas): puntos de todas las
-// trayectorias con el mismo t, ordenados por posición a lo largo del frente original
+// separación real entre rayos vecinos en cada paso (para H por convergencia/divergencia)
+export function calcularSeparaciones(rayos) {
+  const n = rayos.length;
+  return rayos.map((rayo, i) => rayo.map((p, k) => {
+    const dists = [];
+    if (i > 0) {
+      const v = rayos[i-1][Math.min(k, rayos[i-1].length-1)];
+      dists.push(Math.hypot(p.x - v.x, p.y - v.y));
+    }
+    if (i < n - 1) {
+      const v = rayos[i+1][Math.min(k, rayos[i+1].length-1)];
+      dists.push(Math.hypot(p.x - v.x, p.y - v.y));
+    }
+    return dists.length ? dists.reduce((a,b) => a+b, 0) / dists.length : null;
+  }));
+}
+
+// isócronas: puntos de todas las trayectorias en el mismo instante t
 export function frentesIsocronos(trayectorias, pasoTiempo = 5) {
   const tMax = Math.max(...trayectorias.map(tr => tr[tr.length-1]?.t ?? 0));
   const frentes = [];

@@ -1,6 +1,6 @@
 // capa2d.js — orquesta: descargar batimetría EMODnet → motor 2D → dibujar sobre Leaflet
 import { descargarBateria, rejillaEnMetros, metrosALatLon } from './batimetria-cliente.js';
-import { trazarRayo2D, alturaEnRayo, velocidadGrupo, hEn } from './motor2d.js';
+import { trazarRayo2D, alturaEnRayo, velocidadGrupo, calcularSeparaciones, propagarFrente, frentesIsocronos } from './motor2d.js';
 import { LIMITE_ROTURA } from './motor.js';
 
 const $ = id => document.getElementById(id);
@@ -35,10 +35,14 @@ function dibujarBatimetria(mapa, rejilla) {
 }
 
 // Trazado de N rayos paralelos con separación b para el cálculo de shoaling real
-export async function simular2D(mapa, { lat, lon, Hs0, T, alfa0, nRayos = 7, separacionM = 60 }) {
+export async function simular2D(mapa, { lat, lon, Hs0, T, alfa0, nRayos = 9, separacionM = 40 }) {
   capa.clearLayers();
-  $('estado2d').textContent = 'Descargando batimetría EMODnet…';
-  rejilla = await descargarBateria(lat, lon, 8, 11);
+  // RESOLUCIÓN ADAPTABLE: zoom alto (puerto) → rejilla más pequeña y densa
+  const zoom = mapa.getZoom();
+  const anchoKm = zoom >= 14 ? 1.2 : zoom >= 12 ? 3 : zoom >= 10 ? 6 : 10;
+  const nPuntos  = zoom >= 14 ? 15 : zoom >= 12 ? 13 : 11;
+  $('estado2d').textContent = `Descargando batimetría EMODnet (${nPuntos}×${nPuntos}, ${anchoKm} km)…`;
+  rejilla = await descargarBateria(lat, lon, anchoKm, nPuntos);
   rejillaM = rejillaEnMetros(rejilla);
   dibujarBatimetria(mapa, rejilla);
   $('estado2d').textContent = `Batimetría lista (${rejilla.fallos} huecos) · trazando ${nRayos} rayos…`;
@@ -50,17 +54,21 @@ export async function simular2D(mapa, { lat, lon, Hs0, T, alfa0, nRayos = 7, sep
   const x0M = rejillaM.x0 + (rejillaM.nx - 1) * rejillaM.dx / 2;
   const perpendicular = (alfa0 * rad) + Math.PI / 2;
 
-  const rayos = [];
+  const rayosCrudos = [];
   for (let r = 0; r < nRayos; r++) {
     const desplazamiento = (r - (nRayos - 1) / 2) * separacionM;
     const sx = x0M + Math.cos(perpendicular) * desplazamiento;
     const sy = y0M + Math.sin(perpendicular) * desplazamiento;
-    const rayo = trazarRayo2D(rejillaM, sx, sy, alfa0 * rad, T, { paso: rejillaM.dx * 0.8 });
-    // altura con conservación de flujo: b entre vecinos = separacionM (aprox constante aquí)
-    const cg0 = velocidadGrupo(T, rayo[0].h || 20);
-    const conH = alturaEnRayo(rayo, T, Hs0, cg0, separacionM, rayo.map(() => separacionM));
-    rayos.push(conH);
+    rayosCrudos.push(trazarRayo2D(rejillaM, sx, sy, alfa0 * rad, T, { paso: rejillaM.dx * 0.8 }));
   }
+  // separación REAL entre rayos vecinos (convergencia/divergencia por refracción)
+  const separaciones = calcularSeparaciones(rayosCrudos);
+  const rayos = rayosCrudos.map((rayo, i) => {
+    const cg0 = velocidadGrupo(T, rayo[0].h || 20);
+    const b0 = separaciones[i][0] || separacionM;
+    const bPorPunto = rayo.map((_, k) => separaciones[i][k] ?? b0);
+    return alturaEnRayo(rayo, T, Hs0, cg0, b0, bPorPunto);
+  });
 
   // dibujar rayos con color según H (verde→amarillo→rojo) y puntos de rotura en rojo
   for (const rayo of rayos) {
@@ -88,8 +96,33 @@ export async function simular2D(mapa, { lat, lon, Hs0, T, alfa0, nRayos = 7, sep
       .setLatLng([la, lo]).setContent(`H ≈ ${pm.H} m · h = ${pm.h} m`).addTo(capa);
   }
 
-  $('estado2d').textContent = `${nRayos} rayos trazados · fuente: ${rejilla.fuente} · rojo = punto de rotura`;
-  return { rejilla, rayos };
+  $('estado2d').textContent = `${nRayos} rayos trazados · fuente: ${rejilla.fuente} · rojo = rotura · b real`;
+
+  // ---- ANIMACIÓN DE FRENTES (isócronas de fase moviéndose) ----
+  // el frente inicial: línea de puntos alineados aguas arriba de los rayos
+  const frenteInicial = rayosCrudos.map(rayo => {
+    const p0 = rayo[0];
+    return { x: p0.x, y: p0.y, alfa: p0.alfa };
+  });
+  const trajs = propagarFrente(rejillaM, frenteInicial, T, 120);
+  const isos = frentesIsocronos(trajs, T * 0.5); // un frente cada medio periodo
+  const capasFrentes = isos.map((linea, idx) => {
+    const ll = linea.map(pt => {
+      const { lat, lon } = metrosALatLon(rejillaM, pt.x, pt.y);
+      return [lat, lon];
+    });
+    return L.polyline(ll, { color: '#ffffff', weight: 3, opacity: 0 }).addTo(capa);
+  });
+  let iFrente = 0, temporizador = null;
+  function tickAnim() {
+    capasFrentes.forEach((l, i) => l.setStyle({ opacity: i === iFrente ? 0.9 : 0 }));
+    iFrente = (iFrente + 1) % capasFrentes.length;
+  }
+  if (window.__animFrentes) clearInterval(window.__animFrentes);
+  temporizador = setInterval(tickAnim, 400);
+  window.__animFrentes = temporizador;
+
+  return { rejilla, rayos, nFrentes: capasFrentes.length };
 }
 
 export function limpiar2D() { capa?.clearLayers(); $('estado2d').textContent = ''; }
