@@ -57,16 +57,28 @@
       <label>Hs en el punto que marcarás (m)</label><input id="inHs" type="number" step="0.1" value="2" min="0.1" max="15">
       <label>Periodo T (s)</label><input id="inT" type="number" step="0.5" value="10" min="3" max="25">
       <label>Dirección α₀ (° respecto al transecto)</label><input id="inAlfa" type="number" step="1" value="15" min="0" max="80">
-      <h2>2 · Propagación 2D real (batimetría EMODnet)</h2>
+      <h2>2 · Oleaje real de una boya</h2>
+      <select id="inBoya">
+        <option value="">— Manual —</option>
+        <option value="1111">Bilbao</option><option value="1211">Gijón</option>
+        <option value="1311">Cádiz</option><option value="1411">Tenerife</option>
+        <option value="1511">Valencia</option><option value="1611">Barcelona</option>
+      </select>
+      <button class="sec" id="btnBoya">📡 Conectar boya (Hs/Tp reales)</button>
+      <div id="estadoBoya" class="ayuda" style="display:none"></div>
+      <h2>3 · Propagación 2D real (batimetría EMODnet)</h2>
       <button class="sec" id="btn2D">🌍 Simular frentes 2D aquí</button>
       <div id="estado2d" class="ayuda" style="display:none"></div>
-      <h2>3 · Estructura</h2>
+      <h2>4 · Estructura</h2>
       <select id="inEstructura">
         <option value="">Sin estructura</option>
         <option value="muro">Muro vertical (Goda + clapotis)</option>
       </select>
       <label>Posición: % del transecto desde el mar</label><input id="inXEst" type="number" value="70" min="5" max="95">
-      <h2>3 · Escenarios guardados</h2>
+      <h2>5 · Salidas profesionales</h2>
+      <button class="sec" id="btnInforme">📄 Informe imprimible (PDF)</button>
+      <button class="sec" id="btnCSV">📊 Exportar transecto (CSV)</button>
+      <h2>6 · Escenarios guardados</h2>
       <button class="sec" id="btnGuardar">💾 Guardar escenario actual</button>
       <div id="listaEsc" style="margin-top:8px"></div>
       <div class="ayuda">🖱️ En el mapa: <b>clic</b> = punto mar (inicio del transecto) · <b>segundo clic</b> = punto costa (fin). Se activa el cálculo automático.</div>

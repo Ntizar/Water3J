@@ -204,12 +204,48 @@ calcular(); refrescarLista();
 
 // ================= CAPA 2D: batimetría real + frentes =================
 import { init2D, simular2D, limpiar2D } from './capa2d.js';
+import { descargarPartida, ultimaPartida, partidaManual } from './portus.js';
+import { generarInformeHTML, aCSV, descargar } from './informe.js';
 init2D(mapa);
 $('estado2d').style.display = 'block';
 $('btn2D').onclick = async () => {
   const centro = mapa.getCenter();
   try {
-    await simular2D(mapa, { lat: centro.lat, lon: centro.lng,
+    const res = await simular2D(mapa, { lat: centro.lat, lon: centro.lng,
       Hs0: +$('inHs').value, T: +$('inT').value, alfa0: +$('inAlfa').value });
+    window.__ultimoEstudio2D = { rejilla: res.rejilla, nFrentes: res.nFrentes };
   } catch (e) { $('estado2d').textContent = 'Error: ' + e.message; }
+};
+
+// ---- boya real → campos Hs/Tp ----
+let boyaActual = null;
+$('btnBoya').onclick = async () => {
+  const code = $('inBoya').value;
+  const estado = $('estadoBoya'); estado.style.display = 'block';
+  if (!code) { estado.textContent = 'Modo manual: introduce Hs/T y dirección a mano.'; boyaActual = null; return; }
+  estado.textContent = 'Consultando Puertos del Estado…';
+  try {
+    const json = await descargarPartida(code);
+    const p = ultimaPartida(json);
+    if (!p) throw new Error('sin partida válida (¿todo huecos?)');
+    $('inHs').value = p.Hs; $('inT').value = p.Tp;
+    calcular();
+    boyaActual = { code, ...p };
+    estado.textContent = `✅ Hs=${p.Hs} m · Tp=${p.Tp} s — partida de ${p.fecha} GMT (fuente: Puertos del Estado)`;
+  } catch (e) {
+    estado.textContent = `No se pudo conectar (${e.message}). Descarga el JSON de portus.puertos.es y pégalo abajo.`;
+  }
+};
+
+// ---- salidas profesionales ----
+$('btnCSV').onclick = () => {
+  const e = estudioTransecto(configActual());
+  descargar('water3j-transecto.csv', aCSV(e), 'text/csv');
+};
+$('btnInforme').onclick = () => {
+  const e = estudioTransecto(configActual());
+  const w = window.open('', '_blank');
+  w.document.write(generarInformeHTML({ fecha: new Date().toLocaleString('es-ES'),
+    config: configActual(), resumen: resumen(e), rejilla: window.__ultimarejilla2D, boya: boyaActual }));
+  w.document.close();
 };

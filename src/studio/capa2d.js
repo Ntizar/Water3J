@@ -96,6 +96,7 @@ export async function simular2D(mapa, { lat, lon, Hs0, T, alfa0, nRayos = 9, sep
       .setLatLng([la, lo]).setContent(`H ≈ ${pm.H} m · h = ${pm.h} m`).addTo(capa);
   }
 
+  window.__ultimarejilla2D = rejilla;
   $('estado2d').textContent = `${nRayos} rayos trazados · fuente: ${rejilla.fuente} · rojo = rotura · b real`;
 
   // ---- ANIMACIÓN DE FRENTES (isócronas de fase moviéndose) ----
